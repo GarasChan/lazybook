@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "账本",
+  "usingComponents": {
+    "book-list-item": "../../components/booklistitem/booklistitem",
+    "load-more": "../../components/loadmore/loadmore"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#36373d"
+}

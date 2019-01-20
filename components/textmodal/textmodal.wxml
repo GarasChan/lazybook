@@ -1,0 +1,31 @@
+<!--components/textmodal/textmodal.wxml-->
+<view class='text-modal' wx:if='{{isShow}}'>
+  <view class='view' style='bottom:{{bottom}}px'>
+    <input wx:if='{{type === "text"}}' 
+      type='text' 
+      class='text' 
+      value='{{value}}'
+      focus='{{isFocus}}'
+      adjust-position='{{false}}'
+      bindfocus='focusEvent'
+      bindinput='inputEvent'
+      bindblur='hideModal'
+      bindconfirm='okEvent'>
+    </input>
+    <textarea wx:elif='{{type === "textarea"}}' 
+      class='textarea' 
+      value='{{value}}' 
+      fixed='{{true}}'
+      focus='{{isFocus}}'
+      adjust-position='{{false}}'
+      show-confirm-bar='{{false}}'
+      bindfocus='focusEvent'
+      bindinput='inputEvent'
+      bindblur='hideModal'
+      bindconfirm='okEvent'>
+    </textarea>
+    <view class='menus'>
+      <text class='icon lb-icon-ok menu' catchtap='okEvent'></text>
+    </view>
+  </view>
+</view>

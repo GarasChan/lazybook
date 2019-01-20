@@ -1,0 +1,9 @@
+/* pages/system_setting/system-setting.wxss */
+.exit-login {
+  position:absolute;
+  bottom:20rpx;
+  width:90%;
+  background-color:#ffa200;
+  color:rgba(255,255,255,.7);
+  letter-spacing:4rpx;
+}

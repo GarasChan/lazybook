@@ -1,0 +1,32 @@
+/* components/accordion/accordion.wxss */
+.accordion {
+  width: 100%;
+  height: auto;
+  border-bottom: 2rpx solid #e9e9e9;
+}
+
+.accordion .accordion-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 28rpx;
+  box-sizing: border-box;
+  
+}
+
+.accordion .accordion-title .title {
+  flex-grow: 1;
+  padding-right: 80rpx;
+  font-size: 30rpx;
+}
+
+.accordion .accordion-title .icon {
+  color: gray;
+}
+
+.accordion .accordion-content {
+  width: 100%;
+  height: auto;
+  border-top: 2rpx solid #e9e9e9;
+}

@@ -1,0 +1,70 @@
+@import '../../styles/iconfont.wxss';
+
+/* components/textmodal/textmodal.wxss */
+.text-modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  margin: 0;
+  background-color: rgba(0, 0, 0, .4);
+  box-sizing: border-box;
+  z-index: 99;
+}
+
+.text-modal .view {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 16rpx 0 16rpx 16rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.text-modal .text {
+  width: calc(100% - 120rpx);
+  height: 80rpx;
+  margin: 0;
+  padding: 0 16rpx;
+  border: 2rpx solid #e9e9e9;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+  letter-spacing: 4rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.text-modal .textarea {
+  width: calc(100% - 120rpx);
+  height: 200rpx;
+  margin: 0;
+  padding: 16rpx;
+  border: 2rpx solid #e9e9e9;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+  letter-spacing: 4rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.text-modal .menus {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width:120rpx;
+  right:0;
+}
+
+.text-modal .menus .menu {
+  width:100%;
+  text-align:center;
+  font-size:64rpx;
+  line-height: 80rpx;
+  color:#ffa200;
+}

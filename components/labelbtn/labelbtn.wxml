@@ -1,0 +1,2 @@
+<!--components/lebelbtn/lebelbtn.wxml-->
+<text class='label-btn{{isSelected ? " active" : ""}}' catchtap='changeLabel' data-id='{{id}}'>{{value}}</text>

@@ -1,0 +1,158 @@
+/* pages/bookinfo/bookInfo.wxss */
+.book-info {
+  width: 100%;
+  align-items: flex-start;
+  background-color: #fff;
+  font-weight: 600 !important;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 主要信息 */
+.book-info .title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.book-info .title .icon {
+  margin: 20rpx 20rpx 20rpx 36rpx;
+  padding: 16rpx;
+  font-size: 48rpx;
+  line-height: 48rpx;
+  border-radius: 50%;
+  color:#fff;
+}
+
+.book-info .title .name {
+  flex-grow: 1;
+  font-size: 36rpx;
+  letter-spacing: 1rpx;
+}
+
+.book-info .title .price {
+  margin: 0 36rpx;
+  font-size: 36rpx;
+}
+
+/* 详细信息 */
+.book-info .info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-bottom: 4rpx dashed #e9e9e9;
+  border-top: 4rpx dashed #e9e9e9;
+}
+
+.book-info .item {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.book-info .item .icon {
+  margin: 20rpx 20rpx 20rpx 36rpx;
+  font-size: 42rpx;
+  /* line-height: 42rpx; */
+  color: #bbb;
+}
+
+.book-info .item .info-key {
+  flex-grow: 1;
+  font-size: 28rpx;
+  letter-spacing: 2rpx;
+}
+
+.book-info .item .info-value {
+  margin:0 36rpx;
+  font-size:28rpx;
+  max-width:450rpx;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  text-align:right;
+}
+
+/* 备注 */
+.book-info .description {
+  width: 100%;
+  padding-bottom: 20rpx;
+  /* border-bottom: 16rpx solid #e9e9e9; */
+  box-shadow:0px 4px 10px #e9e9e9;
+}
+
+.book-info .description .value {
+  display: block;
+  font-size: 28rpx;
+  margin: 0 36rpx;
+  color: gray;
+}
+
+/* 位置 */
+.book-info .position {
+  width: 100%;
+  margin-top: 16rpx;
+  flex-grow: 1;
+  /* border-top: 16rpx solid #e9e9e9; */
+}
+
+.book-info .position .info-value {
+  margin:0 20rpx;
+}
+
+.book-info .position .info-value text {
+  margin-right: 16rpx 
+}
+.book-info .position .show {
+  margin:0;
+  font-size:28rpx;
+  line-height:28rpx;
+}
+
+.book-info .position map {
+  width: calc(100% - 16rpx);
+  margin: 0 8rpx;
+}
+
+.book-info .position .no-map {
+  display:block;
+  font-size:28rpx;
+  margin:0 36rpx;
+  color:gray;
+
+}
+
+/* 操作按钮 */
+.book-operation {
+  /* position: absolute; */
+  width: 100%;
+  /* bottom: 0; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-top: 1px solid #e9e9e9;
+  /* box-shadow:0px -4px 10px #e9e9e9; */
+}
+
+.book-operation text {
+  padding: 28rpx 36rpx;
+}
+
+.book-operation .icon {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: red;
+}
+
+.book-operation .edit-btn {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 36rpx;
+  border-left: 1px solid #e9e9e9;
+  color: #fa9e00;
+}

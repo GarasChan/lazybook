@@ -1,0 +1,21 @@
+/* components/lebelbtn/lebelbtn.wxss */
+.label-btn {
+  display:inline-block;
+  width: 126rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  letter-spacing: 2rpx;
+  text-align: center;
+  background-color: #EEE9BF;
+  margin-left: 20rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+}
+
+.active {
+  background-color: #ffa200;
+}

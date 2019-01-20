@@ -1,0 +1,10 @@
+<!--components/accordion/accordion.wxml-->
+<view class='accordion'>
+  <view class='accordion-title' catchtap='changeStatus'>
+    <text class='title'>{{title}}</text>
+    <text class='menu icon lb-icon-{{ isShow ? "to" : "share"}}'></text>
+  </view>
+  <view class='accordion-content' hidden='{{isShow}}'>
+    <slot></slot>
+  </view>
+</view>

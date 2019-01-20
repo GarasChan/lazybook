@@ -1,0 +1,48 @@
+<!--pages/my/my.wxml-->
+<view class='container'>
+  <view class='info-container' style='background-image: url({{myBackground}})'>
+     <view class='userinfo'>
+      <image class='userinfo-avatar' src="{{userInfo.avatar}}" mode="cover"></image>
+      <view class='userinfo-info'>
+        <text class='info-nickname'>{{userInfo.name}}</text>
+        <text class='info-signature'>{{userInfo.province + ' ' + userInfo.city}}</text>
+      </view>
+    </view>
+    <view class='bookinfo'>
+      <view class='bookinfo-days'>
+        <text class='value'>123</text>
+        <text class='info'>记账天数</text>
+      </view>
+      <view class='bookinfo-nums'>
+        <text class='value'>3645</text>
+        <text class='info'>记账笔数</text>
+      </view>
+      <view class='bookinfo-others'>
+        <text class='value'>6745765</text>
+        <text class='info'>其他</text>
+      </view>
+    </view>
+  </view>
+  <view class='my-setting-list'>
+    <view class='my-setting-item' bindtap='openSetting'>
+      <text class='icon lb-icon-permissions item-left' style='color:orange'></text>
+      <text class='item-title'>权限管理</text>
+      <text class='icon lb-icon-to item-right'></text>
+    </view>
+    <view class='my-setting-item' bindtap='go2page'>
+      <text class='icon lb-icon-setting item-left' style='color:red'></text>
+      <text class='item-title'>系统设置</text>
+      <text class='icon lb-icon-to item-right'></text>
+    </view>
+    <view class='my-setting-item'>
+      <text class='icon lb-icon-about item-left' style='color:green'></text>
+      <text class='item-title'>关于账本</text>
+      <text class='icon lb-icon-to item-right'></text>
+    </view>
+     <view class='my-setting-item'>
+      <text class='icon lb-icon-share item-left' style='color:blue'></text>
+      <text class='item-title'>推荐我们</text>
+      <text class='icon lb-icon-to item-right'></text>
+    </view>
+  </view>
+</view>

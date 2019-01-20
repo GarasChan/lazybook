@@ -1,0 +1,40 @@
+<!--components/booklist/booklist.wxml-->
+<view class='book-list-item'>
+  <view class='title-bar'>
+    <text class='date'>{{date}}</text>
+    <view class='today-price'>
+      <view class='today-income' hidden="{{income == 0}}">
+        <text class='type'>收入: </text>
+        <text class='price'>{{income}}</text>
+      </view>
+      <view class='today-expense'>
+        <text class='type'>支出: </text>
+        <text class='price'>{{expense}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='items-content'>
+    <block wx:for='{{items}}' wx:key='index'>
+      <movable-area class='subitem-area'>
+        <movable-view class='subitem-view' direction="horizontal" inertia>
+          <view class='inner' catchtap='showDetail' data-id='{{index}}'>
+            <text class='category icon lb-icon-{{item.icon}}' style='background-color: {{item.color}}'></text>
+            <view class='info-container'>
+              <view class='top'>
+                <text class='title'>{{item.title}}</text>
+                <text class='price'>{{item.price}}</text>
+              </view>
+              <view class='bottom'>
+                <text hidden='{{!item.longitude || !item.latitude}}' class='location icon lb-icon-position'></text>
+                <text class='label' space='ensp' decode='{{true}}'>{{item.label}}</text>
+                <text class='time'>{{item.time}}</text>
+              </view>
+            </view>
+          </view>
+          <text class='icon lb-icon-delete delete' catchtap='delBill' data-id='{{index}}'></text>
+        </movable-view>
+      </movable-area>
+      <view class='book-list-item-hr'></view>
+    </block>
+  </view>
+</view>

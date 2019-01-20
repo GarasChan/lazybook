@@ -1,0 +1,144 @@
+@import '../../styles/iconfont.wxss';
+
+/* components/booklist/booklist.wxss */
+.book-list-item {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.book-list-item .title-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 20px;
+  font-size: 12px;
+  color: #999;
+}
+
+.book-list-item .title-bar .today-price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.book-list-item .title-bar .today-income {
+  padding-right: 16px;
+}
+
+.book-list-item .title-bar .today-income .price {
+  color: green;
+}
+
+.book-list-item .title-bar .today-expense .price {
+  color: red;
+}
+
+.book-list-item .items-content {
+  background-color: #fff;
+}
+
+/* 子列表 */
+.subitem-area {
+  width: 750rpx;
+  height: 126rpx;
+}
+
+.subitem-view {
+  width: calc(750rpx + 126rpx);
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.subitem-view .inner {
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 4px 20px;
+  box-sizing: border-box;
+}
+
+.subitem-view .category {
+  margin-right: 10px;
+  padding: 8px;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  border-radius: 24px;
+  color: #fff;
+}
+
+.subitem-view .delete {
+  width: 126rpx;
+  height: 100%;
+  text-align: center;
+  font-size: 24px;
+  line-height: 126rpx;
+  font-weight: 600;
+  background-color: red;
+  color: #fff;
+}
+
+.subitem-view .info-container {
+  width: 100%;
+  padding: 4px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.subitem-view .info-container .top {
+  padding-bottom: 2px;
+  font-size: 16px;
+  color: black;
+}
+
+.subitem-view .info-container .bottom {
+  padding-top: 2px;
+  font-size: 12px;
+  color: gray;
+}
+
+.subitem-view .info-container .top .title {
+  float: left;
+}
+
+.subitem-view .info-container .top .price {
+  float: right;
+}
+
+.subitem-view .info-container .bottom .location {
+  float: left;
+  margin-right: 4px;
+}
+
+.subitem-view .info-container .bottom .label {
+  float: left;
+}
+
+.subitem-view .info-container .bottom .time {
+  float: right;
+}
+
+/* 分割线 */
+.book-list-item .items-content .book-list-item-hr {
+  bottom: 0;
+  margin: 0 auto;
+  width: calc(100% - 40px);
+  height: 1px;
+  background-color: #eee;
+}
+
+.book-list-item .items-content .book-list-item-hr:last-child {
+  bottom: 0;
+  margin: 0 auto;
+  width: calc(100% - 40px);
+  height: 0;
+  background-color: #eee;
+}

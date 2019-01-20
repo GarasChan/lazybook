@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <image class="login-img" src="{{loginBackground}}" mode="cover"></image>
+  <view wx:if="{{isWeiChatUser}}" class="weichat-login">
+    <button class='login-btn' open-type="getUserInfo" bindgetuserinfo="weichatLogin"> 微信用户快速登录 </button>
+    <view class='weichat-login-info'>
+      <text class='tip-title'>申请获得以下权限：</text>
+      <text class='tip-content'>获得你的公开信息（昵称、头像等）</text>
+    </view>
+  </view>
+  <view wx:else class="phone-login">
+    <view class='phone-login-code'>
+      <view class='phone-num'>
+        <label class='info'>手机号</label>
+        <input type='number' placeholder='输入手机号'></input>
+        <button class='code a'>获取验证码</button>
+      </view>
+      <view class='phone-code'>
+        <label class='info'>验证码</label>
+        <input type='text' placeholder='输入验证码'></input>
+      </view>
+    </view>
+    <button class='login-btn'>登录</button>
+  </view>
+  <button class='a login-type-btn' bindtap='changeLoginType'>{{loginMsg}}</button>
+</view>

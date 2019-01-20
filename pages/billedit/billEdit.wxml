@@ -1,0 +1,100 @@
+<!--pages/bookedit/bookEdit.wxml-->
+<view class="container book-edit">
+  <scroll-view class='edit-main' scroll-y='{{true}}'>
+    <view class='edit-title'>
+      <text class='icon lb-icon-{{icon.icon}} type' style='background-color: {{color}}'></text>
+      <text class='name'>{{icon.name}}</text>
+      <input type='digit' class='price' value='{{price}}' placeholder='0' focus='true' bindinput='changePrice'></input>
+    </view>
+    <view class='edit-content'>
+      <view class='icon-content'>
+        <view class='content-title'>
+          <text class='name'>{{iconType.value + "（" + icons.length + "）"}}</text>
+          <picker 
+            mode="multiSelector" 
+            range='{{multiArray}}' 
+            range-key='value' 
+            value='{{multiIndex}}'
+            bindchange="changeIconType" 
+            bindcolumnchange='changeBookType'>
+             <text class='icon lb-icon-shaixuan'></text>
+          </picker>
+        </view>
+        <view class='content-items'>
+          <view class='item{{icon.icon == iconItem.icon ? " active" : ""}}' 
+            wx:for='{{icons}}' 
+            wx:key='iconIdx' 
+            wx:for-index="iconIdx" 
+            wx:for-item="iconItem" 
+            catchtap='changeIcon' 
+            data-idx='{{iconIdx}}'>
+            <text class='icon lb-icon-{{iconItem.icon}}'></text>
+            <text class='text'>{{iconItem.name}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='color-content'>
+        <view class='content-title'>
+          <text class='name'>图标颜色</text>
+        </view>
+        <movable-area class='content-colors'>
+          <movable-view class='colors-view' direction="horizontal" style='width: {{colors.length * 136}}rpx'>
+            <view 
+              class='item{{ color === colorItem ? " active" : ""}}' 
+              wx:for='{{colors}}' 
+              wx:key='colorIdx' 
+              wx:for-index="colorIdx" 
+              wx:for-item="colorItem" 
+              style='background-color: {{colorItem}}' 
+              catchtap='changeColor' 
+              data-idx='{{colorIdx}}'>
+            </view>
+          </movable-view>
+        </movable-area>
+      </view>
+      <view class='description-content'>
+        <view class='content-title'>
+          <text class='name'>备注</text>
+        </view>
+        <view class='content-description{{!description ? " place-holder" : ""}}' bindtap='showChangeDescriptionModal'>{{description || '给该账单添加一个醒目的提示吧'}}
+          <!-- <input placeholder='给该账单添加一个醒目的提示吧~' cursor-spacing='{{10}}' value='{{description}}' bindinput='changeDescription'></input> -->
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='edit-foot'>
+    <view class='labels-content'>
+      <view class='labels-info'>常用标签</view>
+      <view wx:if='{{labels.length === 0}}' class='none-labels'>暂无常用标签</view>
+      <movable-area wx:else class='content-labels'>
+        <movable-view class='labels-view' direction='horizontal' style='width: {{labels.length * 150}}rpx'>
+          <label-btn 
+            wx:for='{{labels}}' 
+            wx:key='index' 
+            bindchangeLabel='toggleLabel' 
+            id='{{index}}' 
+            value='{{item}}' 
+            isSelected='{{item === label}}'
+            style='height: 50rpx' />
+        </movable-view>
+      </movable-area>
+      <!-- <text class='icon lb-icon-add-fill add-label' bindtap='showAddLabelModal'></text> -->
+    </view>
+    <view class='menus-content'>
+      <view class='menus'>
+        <picker mode="date" value='{{date}}' bindchange="changeDate">
+          <text class='icon lb-icon-date menu date active'></text>
+        </picker>
+        <picker mode="time" value='{{time}}' bindchange="changeTime">
+          <text class='icon lb-icon-time menu time active'></text>
+        </picker>
+        <text class='icon lb-icon-position menu position{{ position.longitude && position.latitude ? " active" : ""}}' catchtap='changePosition'></text>
+        <text class='menu labels' space='ensp' decode='{{true}}' bindtap='showLabelModal'>{{label || '标签'}}</text>
+      </view>
+      <text class='icon lb-icon-ok ok' bindtap='saveBill'></text>
+    </view>
+  </view>
+  <text-modal 
+    id='textModal'
+    bindokEvent='okEvent' />
+</view>

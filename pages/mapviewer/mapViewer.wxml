@@ -1,0 +1,12 @@
+<!--pages/mapviewer/mapViewer.wxml-->
+<view class='container map-viewer'>
+  <map
+    id='myMap'
+    longitude='{{mapInfo.longitude}}' 
+    latitude='{{mapInfo.latitude}}' 
+    scale='{{18}}'
+    show-location
+    markers='{{markers}}'>
+    <cover-image class='view' src='../../images/view.png' catchtap='viewMyLocation'></cover-image>
+  </map>
+</view>
