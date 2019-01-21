@@ -14,16 +14,21 @@
   </view>
   <scroll-view class='bills-list' 
     scroll-y='true' 
+    lower-threshold='40rpx'
+    scroll-into-view='{{scroll2View}}'
+    enable-back-to-top='{{true}}'
     bindscrolltolower='loadMoreData'>
+    <text id='top'></text>
     <book-list-item wx:for='{{bills}}'  wx:key='index'
       date='{{item.date}}'
+      scroll-top='{{scrollTop}}'
       income='{{item.income}}'
       expense='{{item.expense}}'
       items='{{item.items}}' 
       bindgo2detail='go2detail'
       binddelBill='delBill'
       data-id='{{index}}'/>
-      <load-more id='loadMore' bindloadMore='loadMoreData'/>
+      <load-more id='loadMore'/>
   </scroll-view>
   <navigator url='../billedit/billEdit' class='icon lb-icon-add-empty add-bill'></navigator>
 </view>
