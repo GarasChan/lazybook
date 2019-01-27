@@ -37,6 +37,7 @@ Page({
    */
   onLoad: function (options) {
     this.textModal = this.selectComponent('#textModal');
+    this.calculator = this.selectComponent('#calculator');
 
     let data = null;
     if (options.type === 'edit') {
@@ -70,10 +71,8 @@ Page({
     this.setData( data );
   },
 
-  changePrice: function(e) {
-    this.setData({
-      price: e.detail.value
-    })
+  changePrice: function() {
+    this.calculator.showCalculator(this.data.price);
   },
 
   changeBookType: function(e) {

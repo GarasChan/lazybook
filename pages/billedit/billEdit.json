@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "label-btn": "../../components/labelbtn/labelbtn",
-    "text-modal": "../../components/textmodal/textmodal"
+    "text-modal": "../../components/textmodal/textmodal",
+    "calculator": "../../components/calculator/calculator"
   }
 }

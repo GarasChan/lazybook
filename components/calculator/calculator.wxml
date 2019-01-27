@@ -1,0 +1,34 @@
+<!--components/calculator/calculator.wxml-->
+<view hidden='{{!isShow}}' class='calculator' catchtap='hideCalculator'>
+  <view class='result-container'>
+    <input class='calc-con' disabled='{{true}}' placeholder='请输入表达式' value='{{value}}'/>
+    <text> = </text>
+    <input class='calc-res' disabled='{{true}}' placeholder='0' value='{{result}}' />
+  </view>
+  <view class='calc-container' catchtap='changeValue'>
+    <view class='row'>
+      <view class='item' data-val='7'>7</view>
+      <view class='item' data-val='8'>8</view>
+      <view class='item' data-val='9'>9</view>
+      <view class='item' data-val='<'>←</view>
+    </view>
+    <view class='row'>
+      <view class='item' data-val='4'>4</view>
+      <view class='item' data-val='5'>5</view>
+      <view class='item' data-val='6'>6</view>
+      <view class='item' data-val='+-'>+/-</view>
+    </view>
+    <view class='row'>
+      <view class='item' data-val='1'>1</view>
+      <view class='item' data-val='2'>2</view>
+      <view class='item' data-val='3'>3</view>
+      <view class='item' data-val='*/'>*//</view>
+    </view>
+    <view class='row'>
+      <view class='item' data-val='<<'>返回</view>
+      <view class='item' data-val='0'>0</view>
+      <view class='item' data-val='.'>.</view>
+      <view class='item' data-val='ok'>{{okText}}</view>
+    </view>
+  </view>
+</view>

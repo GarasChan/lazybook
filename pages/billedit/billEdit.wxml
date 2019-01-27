@@ -4,7 +4,7 @@
     <view class='edit-title'>
       <text class='icon lb-icon-{{icon.icon}} type' style='background-color: {{color}}'></text>
       <text class='name'>{{icon.name}}</text>
-      <input type='digit' class='price' value='{{price}}' placeholder='0' focus='true' bindinput='changePrice'></input>
+      <text class='price' catchtap='changePrice'>{{price || 0}}</text>
     </view>
     <view class='edit-content'>
       <view class='icon-content'>
@@ -94,7 +94,6 @@
       <text class='icon lb-icon-ok ok' bindtap='saveBill'></text>
     </view>
   </view>
-  <text-modal 
-    id='textModal'
-    bindokEvent='okEvent' />
+  <text-modal id='textModal' bindokEvent='okEvent' />
+  <calculator id='calculator' />
 </view>
