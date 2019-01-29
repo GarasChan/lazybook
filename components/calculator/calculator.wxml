@@ -10,7 +10,7 @@
       <view class='item' data-val='7'>7</view>
       <view class='item' data-val='8'>8</view>
       <view class='item' data-val='9'>9</view>
-      <view class='item' data-val='<'>←</view>
+      <view class='item' data-val='<' catchlongpress='clearValue'>←</view>
     </view>
     <view class='row'>
       <view class='item' data-val='4'>4</view>
@@ -22,13 +22,13 @@
       <view class='item' data-val='1'>1</view>
       <view class='item' data-val='2'>2</view>
       <view class='item' data-val='3'>3</view>
-      <view class='item' data-val='*/'>*//</view>
+      <view class='item' data-val='*/'>*/÷</view>
     </view>
     <view class='row'>
       <view class='item' data-val='<<'>返回</view>
       <view class='item' data-val='0'>0</view>
       <view class='item' data-val='.'>.</view>
-      <view class='item' data-val='ok'>{{okText}}</view>
+      <view class='item' data-val='ok'>完成</view>
     </view>
   </view>
 </view>

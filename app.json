@@ -7,8 +7,8 @@
     "pages/systemsetting/systemSetting",
     "pages/bookinfo/bookInfo",
     "pages/mapviewer/mapViewer",
-    "pages/billedit/billEdit"
-    
+    "pages/billedit/billEdit",
+    "pages/myinfo/myInfo"
   ],
   "permission": {
     "scope.userLocation": {

@@ -41,6 +41,16 @@ Page({
     })
   },
 
+  go2userInfo: function() {
+    wx.navigateTo({
+      url: '../myinfo/myInfo',
+    })
+  },
+  
+  aa: function() {
+    console.log('长按');
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

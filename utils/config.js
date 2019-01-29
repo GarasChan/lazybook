@@ -16,7 +16,8 @@ let config = {
     // getUserUrl: `http://www.garaschan.online:4290/lazybook/wx/user`,
     loginUrl: `http://118.25.214.118:4290/lazybook/wx/login`,
     getUserUrl: `http://118.25.214.118:4290/lazybook/wx/user`,
-    billUrl: `http://118.25.214.118:4290/lazybook/wx/bill`
+    billUrl: `http://118.25.214.118:4290/lazybook/wx/bill`,
+    uploadUrl: `http://118.25.214.118:4290/lazybook/wx/upload`
   },
 
   //默认图片路径

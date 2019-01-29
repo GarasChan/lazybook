@@ -1,0 +1,21 @@
+<!--pages/myinfo/myInfo.wxml-->
+<view class='container'>
+  <view class='avatar'>
+    <text>头像</text>
+    <image src='{{avatar}}' bindtap='changeAvatar'></image>
+  </view>
+  <view class='base-info'>
+    <view wx:for='{{baseInfos}}' wx:key='index' class='info-item' data-key='{{item.key}}' bindtap='changeInfo'>
+      <text>{{item.title}}</text>
+      <text class='value'>{{item.value || '未选择'}}</text>
+      <text class='icon lb-icon-right-arrow'></text>
+    </view>
+  </view>
+  <view class='social-info'>
+    <view wx:for='{{socialInfos}}' wx:key='index' class='info-item' data-key='{{item.key}}' bindtap='changeInfo'>
+      <text>{{item.title}}</text>
+      <text class='value'>{{item.value || '未选择'}}</text>
+      <text class='icon lb-icon-right-arrow'></text>
+    </view>
+  </view>
+</view>

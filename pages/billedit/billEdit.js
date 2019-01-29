@@ -75,6 +75,11 @@ Page({
     this.calculator.showCalculator(this.data.price);
   },
 
+  confirmPrice: function(e) {
+    const price = e.detail.result;
+    this.setData({ price });
+  },
+
   changeBookType: function(e) {
     const column = e.detail.column,
       idx = e.detail.value;
@@ -327,14 +332,6 @@ Page({
         console.log(err);
       }
     })
-  },
-
-  saveSucceed: function() {
-
-  },
-
-  saveFailed: function() {
-
   },
 
   /**

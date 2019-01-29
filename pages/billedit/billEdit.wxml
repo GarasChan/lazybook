@@ -95,5 +95,5 @@
     </view>
   </view>
   <text-modal id='textModal' bindokEvent='okEvent' />
-  <calculator id='calculator' />
+  <calculator id='calculator' bindconfirmEvent='confirmPrice' />
 </view>
