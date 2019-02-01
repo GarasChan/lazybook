@@ -5,17 +5,54 @@
     <image src='{{avatar}}' bindtap='changeAvatar'></image>
   </view>
   <view class='base-info'>
-    <view wx:for='{{baseInfos}}' wx:key='index' class='info-item' data-key='{{item.key}}' bindtap='changeInfo'>
-      <text>{{item.title}}</text>
-      <text class='value'>{{item.value || '未选择'}}</text>
+    <view class='info-item' data-key='name' data-title='昵称' bindtap='changeInfo'>
+      <text>昵称</text>
+      <text class='value'>{{name || '未设置'}}</text>
+      <text class='icon lb-icon-right-arrow'></text>
+    </view>
+    <picker range='{{genderArr}}'>
+      <view class='info-item' data-key='gender' data-title='性别' bindtap='changeInfo'>
+        <text>性别</text>
+        <text class='value'>{{gender || '未设置'}}</text>
+        <text class='icon lb-icon-right-arrow'></text>
+      </view>
+    </picker>
+    <picker mode='region'>
+      <view class='info-item' data-key='region' data-title='地区' bindtap='changeInfo'>
+        <text>地区</text>
+        <text class='value'>{{region || '未设置'}}</text>
+        <text class='icon lb-icon-right-arrow'></text>
+      </view>
+    </picker>
+    <picker mode='date'>
+      <view class='info-item' data-key='birthday' data-title='生日' bindtap='changeInfo'>
+        <text>生日</text>
+        <text class='value'>{{birthday || '未设置'}}</text>
+        <text class='icon lb-icon-right-arrow'></text>
+      </view>
+    </picker>
+    <view class='info-item' data-key='career' data-title='职业' bindtap='changeInfo'>
+      <text>职业</text>
+      <text class='value'>{{career || '未设置'}}</text>
+      <text class='icon lb-icon-right-arrow'></text>
+    </view>
+    <view class='info-item' data-key='signature' data-title='个性签名' bindtap='changeInfo'>
+      <text>个性签名</text>
+      <text class='value'>{{signature || '未设置'}}</text>
       <text class='icon lb-icon-right-arrow'></text>
     </view>
   </view>
   <view class='social-info'>
-    <view wx:for='{{socialInfos}}' wx:key='index' class='info-item' data-key='{{item.key}}' bindtap='changeInfo'>
-      <text>{{item.title}}</text>
-      <text class='value'>{{item.value || '未选择'}}</text>
+    <view class='info-item' data-key='phone' data-title='手机号' bindtap='changeInfo'>
+      <text>手机号</text>
+      <text class='value'>{{phone || '未设置'}}</text>
+      <text class='icon lb-icon-right-arrow'></text>
+    </view>
+    <view class='info-item' data-key='email' data-title='电子邮箱' bindtap='changeInfo'>
+      <text>电子邮箱</text>
+      <text class='value'>{{email || '未设置'}}</text>
       <text class='icon lb-icon-right-arrow'></text>
     </view>
   </view>
 </view>
+<modal id='inputModal' bindconfirmEvent='confirmEvent'></modal>

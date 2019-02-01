@@ -92,8 +92,41 @@ let Util = {
     return value.replace(/\s*/g, '');
   },
 
+  isNumber: (value) => {
+    if (value === '') return false;
+    let mdata = Number(value);
+    if (mdata === 0) return true;
+    return !isNaN(mdata);
+  },
+
   isArray: (value) => {
     return Object.prototype.toString.call(value) === '[object Array]';
+  },
+
+  code2gender: (code) => {
+    switch (code) {
+      case -1:
+        return '女';
+      case 0:
+        return '保密';
+      case 1:
+        return '男';
+      default:
+        return '保密';
+    }
+  },
+
+  gender2code: (gender) => {
+    switch (gender) {
+      case '女':
+        return -1;
+      case '保密':
+        return 0;
+      case '男':
+        return 1;
+      default:
+        return 0;
+    }
   },
 
   changeBills2Lists: function(bills) {

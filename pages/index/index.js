@@ -55,9 +55,7 @@ Page({
                 name: userInfo.nickName,
                 avatar: userInfo.avatarUrl,
                 gender: userInfo.gender,
-                country: userInfo.country,
-                province: userInfo.province,
-                city: userInfo.city,
+                region: userInfo.province + ' ' + userInfo.city,
                 language: userInfo.language
               };
               login.registerUser(userInfo).then(res => {

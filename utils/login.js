@@ -51,7 +51,7 @@ let login = {
   getUserInfo: function() {
     return new Promise((resolve, reject) => {
       util.request({
-        url: config.urlComponents.getUserUrl,
+        url: config.urlComponents.userUrl,
         success: res => {
           if (res.statusCode === 400) {
             reject({ 
@@ -80,7 +80,7 @@ let login = {
   registerUser: function(userInfo) {
     return new Promise((resolve, reject) => {
       util.request({
-        url: config.urlComponents.getUserUrl,
+        url: config.urlComponents.userUrl,
         method: 'post',
         data: userInfo,
         success: (res) => {
@@ -148,7 +148,7 @@ let login = {
    */
   // getUserInfo: (callBack) => {
   //   util.request({
-  //     url: config.urlComponents.getUserUrl,
+  //     url: config.urlComponents.userUrl,
   //     method: 'GET',
   //     success: (res) => {
   //       // 未登录
@@ -192,7 +192,7 @@ let login = {
   //         language: userInfo.language
   //       };
   //       util.request({
-  //         url: config.urlComponents.getUserUrl,
+  //         url: config.urlComponents.userUrl,
   //         method: 'post',
   //         data: userInfo,
   //         success: (res) => {

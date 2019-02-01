@@ -5,19 +5,20 @@ let config = {
   //根路径
   // host: 'http://www.garaschan.online:4290/',
   // host: 'http://118.25.214.118:4290/',
-  host: 'http://127.0.0.1:4290/',
+  host: 'http://172.16.15.135:4290/',
 
   //请求路径
   urlComponents: {
-    // loginUrl: `http://127.0.0.1:4290/lazybook/wx/login`,
-    // getUserUrl: `http://127.0.0.1:4290/lazybook/wx/user`,
-    // billUrl: `http://127.0.0.1:4290/lazybook/wx/bill`,
+    loginUrl: `http://172.16.15.135:4290/lazybook/wx/login`,
+    userUrl: `http://172.16.15.135:4290/lazybook/wx/user`,
+    billUrl: `http://172.16.15.135:4290/lazybook/wx/bill`,
+    uploadUrl: `http://172.16.15.135:4290/lazybook/wx/upload`,
     // loginUrl: `http://www.garaschan.online:4290/lazybook/wx/login`,
-    // getUserUrl: `http://www.garaschan.online:4290/lazybook/wx/user`,
-    loginUrl: `http://118.25.214.118:4290/lazybook/wx/login`,
-    getUserUrl: `http://118.25.214.118:4290/lazybook/wx/user`,
-    billUrl: `http://118.25.214.118:4290/lazybook/wx/bill`,
-    uploadUrl: `http://118.25.214.118:4290/lazybook/wx/upload`
+    // userUrl: `http://www.garaschan.online:4290/lazybook/wx/user`,
+    // loginUrl: `http://118.25.214.118:4290/lazybook/wx/login`,
+    // userUrl: `http://118.25.214.118:4290/lazybook/wx/user`,
+    // billUrl: `http://118.25.214.118:4290/lazybook/wx/bill`,
+    // uploadUrl: `http://118.25.214.118:4290/lazybook/wx/upload`
   },
 
   //默认图片路径
