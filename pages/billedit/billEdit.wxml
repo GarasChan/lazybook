@@ -1,4 +1,5 @@
 <!--pages/bookedit/bookEdit.wxml-->
+<wxs module="util" src="../../utils/util.wxs"></wxs>
 <view class="container book-edit">
   <scroll-view class='edit-main' scroll-y='{{true}}'>
     <view class='edit-title'>
@@ -65,8 +66,16 @@
   <view class='edit-foot'>
     <view class='labels-content'>
       <view class='labels-info'>常用标签</view>
-      <view wx:if='{{labels.length === 0}}' class='none-labels'>暂无常用标签</view>
-      <movable-area wx:else class='content-labels'>
+      <view wx:if='{{labels.length === 0}}' class='content-labels'>暂无常用标签</view>
+      <hmovable 
+        wx:else
+        class='content-labels'
+        items='{{labels}}' 
+        multiSelector='true' 
+        selectedItems='{{label}}' 
+        bindchange='toggleLabel' />
+      <text class='icon lb-icon-add-fill add-label' bindtap='showLabelModal'></text>
+      <!-- <movable-area wx:else class='content-labels'>
         <movable-view class='labels-view' direction='horizontal' style='width: {{labels.length * 150}}rpx'>
           <label-btn 
             wx:for='{{labels}}' 
@@ -77,8 +86,7 @@
             isSelected='{{item === label}}'
             style='height: 50rpx' />
         </movable-view>
-      </movable-area>
-      <!-- <text class='icon lb-icon-add-fill add-label' bindtap='showAddLabelModal'></text> -->
+      </movable-area> -->
     </view>
     <view class='menus-content'>
       <view class='menus'>
@@ -89,7 +97,7 @@
           <text class='icon lb-icon-time menu time active'></text>
         </picker>
         <text class='icon lb-icon-position menu position{{ position.longitude && position.latitude ? " active" : ""}}' catchtap='changePosition'></text>
-        <text class='menu labels' space='ensp' decode='{{true}}' bindtap='showLabelModal'>{{label || '标签'}}</text>
+        <text class='menu labels' space='ensp' decode='{{true}}'>{{label.length > 0 ? util.array2string(label, '&ensp;') : '标签'}}</text>
       </view>
       <text class='icon lb-icon-ok ok' bindtap='saveBill'></text>
     </view>

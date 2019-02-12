@@ -83,6 +83,21 @@ Page({
     })
   },
 
+  changeGender: function(e) {
+    const gender = util.code2gender(e.detail.value);
+    this.setData({ gender });
+  },
+
+  changeRegion: function(e) {
+    const region = e.detail.value.join(' ');
+    this.setData({ region });
+  },
+
+  changeBirthday: function (e) {
+    const birthday = e.detail.value;
+    this.setData({ birthday });
+  },
+
   changeInfo: function(e) {
     const key = e.currentTarget.dataset.key,
       title = e.currentTarget.dataset.title,

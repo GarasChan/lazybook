@@ -1,4 +1,5 @@
 <!--components/booklist/booklist.wxml-->
+<wxs module="util" src="../../utils/util.wxs"></wxs>
 <view class='book-list-item'>
   <view class='title-bar'>
     <text class='date'>{{date}}</text>
@@ -26,7 +27,7 @@
               </view>
               <view class='bottom'>
                 <text hidden='{{!item.longitude || !item.latitude}}' class='location icon lb-icon-position'></text>
-                <text class='label' space='ensp' decode='{{true}}'>{{item.label}}</text>
+                <text class='label' space='ensp' decode='{{true}}'>{{util.comma2space(item.label)}}</text>
                 <text class='time'>{{item.time}}</text>
               </view>
             </view>

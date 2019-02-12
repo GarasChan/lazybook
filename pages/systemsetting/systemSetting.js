@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    storageSize: 0
   },
 
   exitLogin: function() {
@@ -30,7 +30,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const storageSize = wx.getStorageInfoSync().currentSize;
+    this.setData({ storageSize });
+  },
 
+  clearStorage: function() {
+    const _this = this;
+    wx.showModal({
+      title: '是否清除缓存',
+      content: '清除后，同时也会清除登录信息',
+      success(res) {
+        if (res.confirm) {
+          wx.clearStorage();
+          _this.setData({
+            storageSize: 0
+          })
+        }
+      }
+    })
   },
 
   /**

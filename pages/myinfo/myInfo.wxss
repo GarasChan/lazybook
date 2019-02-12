@@ -1,4 +1,5 @@
 /* pages/myinfo/myInfo.wxss */
+
 /* 头像 */
 .avatar {
   width: 100%;
@@ -58,4 +59,18 @@
 .info-item .lb-icon-right-arrow {
   line-height: 100rpx;
   color: gray;
+}
+
+/* 保存 */
+.save-info {
+  width:100%;
+  padding: 40rpx 0;
+  background-color:#e9e9e9;
+}
+
+.save-info button {
+  width:90%;
+  background-color:#ffa200;
+  color:rgba(255,255,255,.7);
+  letter-spacing:4rpx;
 }

@@ -20,7 +20,7 @@ Page({
     iconType: iconsConfig.iconTypes[0][0],
     color: iconsConfig.iconColors[0],
     description: '',
-    label: '',
+    label: [],
     date: '',
     time: '',
     position: null,
@@ -53,6 +53,7 @@ Page({
       info.iconType = iconsConfig.iconTypes[bookIdx][iconIdx];
       info.multiIndex = [bookIdx, iconIdx];
       info.icons = iconsConfig[info.bookType.key][info.iconType.key];
+      info.label = info.label && info.label.split(/,|，/g);
       // info.label = info.label && info.label.replace(',', '&ensp;');
       data = Object.assign({}, info);
     } else {
@@ -128,9 +129,9 @@ Page({
   },
 
   toggleLabel: function(e) {
-    let label = e.detail.value;
-    label = this.data.label === label ? '' : label;
-    this.setData({ label });
+    this.setData({ 
+      label: e.detail.selectedItems
+    });
     // let label = this.data.label ? this.data.label.split('&ensp;') : [],
     //   idx = label.indexOf(e.detail.value);
     // if (idx < 0) {
@@ -205,7 +206,7 @@ Page({
   },
 
   showLabelModal: function(e) {
-    this.textModal.showModal('text', 'changeLabel', this.data.label);
+    this.textModal.showModal('text', 'changeLabel');
   },
 
   // showAddLabelModal: function(e) {
@@ -236,16 +237,23 @@ Page({
   },
 
   changeLabel: function (value) {
-    if(!value) return;
-    let labels = this.data.labels;
+    let val = value.split(/,|，/g),
+      labels = this.data.labels,
+      label = this.data.label;
+
     const idx = labels.indexOf(value);
     if (idx > -1) {
-      labels.splice(idx, 1);
+      if(label.indexOf(value)) {
+        return;
+      }
+      label.push(value);
+    } else {
+      labels.unshift(value);
+      label.push(value);
     }
-    labels.unshift(value);
     this.setData({
       labels,
-      label: value
+      label
     })
     // if (!value) return;
     // let label = this.data.label.split('&ensp;');
@@ -285,7 +293,7 @@ Page({
       recorder: app.globalData.userInfo.name,
       date: this.data.date,
       time: this.data.time,
-      label: this.data.label,
+      label: this.data.label.join(','),
       position: this.data.position && this.data.position.address,
       longitude: this.data.position && this.data.position.longitude,
       latitude: this.data.position && this.data.position.latitude,

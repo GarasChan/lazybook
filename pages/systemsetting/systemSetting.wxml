@@ -1,4 +1,11 @@
 <!--pages/system_setting/system-setting.wxml-->
 <view class='container'>
+  <view class='custom-setting'>
+    <view class='info-item' bindtap='clearStorage'>
+      <text>清除缓存</text>
+      <text class='value'>{{storageSize}} kb</text>
+      <text class='icon lb-icon-right-arrow'></text>
+    </view>
+  </view>
   <button class='exit-login' bindtap='exitLogin'>退出登录</button>
 </view>

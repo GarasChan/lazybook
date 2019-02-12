@@ -1,0 +1,29 @@
+var util = {
+  // 检查数组中是否包含某项
+  checkHave: function(item, items) {
+    return items.indexOf(item) > -1;
+  },
+
+  // 将'，'转换成'&ensp;'
+  comma2space: function(value) {
+    var reg = getRegExp(',|，', 'g');
+    return value.replace(reg, '&ensp;');
+  },
+
+  // 将'&ensp;'转换成'，'
+  space2comma: function (value) {
+    var reg = getRegExp('&ensp;', 'g');
+    return value.replace(reg, '，');
+  },
+
+  // 数组转字符串
+  array2string: function(arr, separator) {
+    return arr.join(separator || ',');
+  },
+
+  // 字符串转数组
+  string2array: function (str, separator) {
+    return str.split(separator || ',');
+  }
+}
+module.exports = util;

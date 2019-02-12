@@ -1,4 +1,5 @@
 <!--pages/bookinfo/bookInfo.wxml-->
+<wxs module="util" src="../../utils/util.wxs"></wxs>
 <view class='container'>
   <view class='book-info'>
     <view class='title'>
@@ -10,7 +11,7 @@
       <view class='item label'>
         <text class='icon lb-icon-label'></text>
         <text class='info-key'>标签</text>
-        <text class='info-value' space='ensp' decode='{{true}}'>{{info.label}}</text>
+        <text class='info-value' space='ensp' decode='{{true}}'>{{util.comma2space(info.label)}}</text>
       </view>
       <view class='item user'>
         <text class='icon lb-icon-recorder'></text>

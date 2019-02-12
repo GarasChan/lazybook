@@ -3,30 +3,30 @@ import config from './utils/config.js';
 //app.js
 App({
   onLaunch: function () {
-    const _this = this;
-    // 获取设备信息
-    wx.getSystemInfo({
-      success(res) {
-        _this.globalData.systemInfo = {
-          brand: res.brand,
-          model: res.model,
-          pixelRatio: res.pixelRatio,
-          screenWidth: res.screenWidth,
-          screenHeight: res.screenHeight,
-          windowWidth: res.windowWidth,
-          windowHeight: res.windowHeight,
-          statusBarHeight: res.statusBarHeight,
-          language: res.language,
-          version: res.version,
-          system: res.system,
-          platform: res.platform,
-          fontSizeSetting: res.fontSizeSetting
-        }
-      },
-      fail: err => {
-        console.log(err)
-      }
-    })
+    // const _this = this;
+    // // 获取设备信息
+    // wx.getSystemInfo({
+    //   success(res) {
+    //     _this.globalData.systemInfo = {
+    //       brand: res.brand,
+    //       model: res.model,
+    //       pixelRatio: res.pixelRatio,
+    //       screenWidth: res.screenWidth,
+    //       screenHeight: res.screenHeight,
+    //       windowWidth: res.windowWidth,
+    //       windowHeight: res.windowHeight,
+    //       statusBarHeight: res.statusBarHeight,
+    //       language: res.language,
+    //       version: res.version,
+    //       system: res.system,
+    //       platform: res.platform,
+    //       fontSizeSetting: res.fontSizeSetting
+    //     }
+    //   },
+    //   fail: err => {
+    //     console.log(err)
+    //   }
+    // })
     
     // const _this = this;
     this.defaultImages = config.defaultImages;

@@ -1,0 +1,13 @@
+<!--components/hmovable/hmovable.wxml-->
+<wxs module="util" src="../../utils/util.wxs"></wxs>
+<movable-area class='h-movable-area' style='width: 100%; height: 100%'>
+  <movable-view class='h-movable-view' direction='horizontal' style='width: {{items.length * 150}}rpx; height: 100%'>
+    <text 
+      wx:for='{{items}}' 
+      wx:key='index' 
+      class='item{{util.checkHave(item, selectedItems) ? " active" : ""}}' 
+      catchtap='changeStatus' 
+      data-id='{{index}}' >{{item}}
+    </text>
+  </movable-view>
+</movable-area>

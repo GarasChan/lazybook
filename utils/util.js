@@ -104,13 +104,14 @@ let Util = {
   },
 
   code2gender: (code) => {
+    code = parseInt(code);
     switch (code) {
-      case -1:
-        return '女';
       case 0:
-        return '保密';
-      case 1:
         return '男';
+      case 1:
+        return '女';
+      case 2:
+        return '保密';
       default:
         return '保密';
     }
@@ -118,14 +119,14 @@ let Util = {
 
   gender2code: (gender) => {
     switch (gender) {
-      case '女':
-        return -1;
-      case '保密':
-        return 0;
       case '男':
-        return 1;
-      default:
         return 0;
+      case '女':
+        return 1;
+      case '保密':
+        return 2;
+      default:
+        return 2;
     }
   },
 

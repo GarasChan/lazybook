@@ -7,3 +7,34 @@
   color:rgba(255,255,255,.7);
   letter-spacing:4rpx;
 }
+
+.custom-setting {
+  width:100%;
+  background-color:#fff;
+}
+
+/* 列表单项 */
+.info-item {
+  width: calc(100% - 80rpx);
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 40rpx ;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+.info-item .value {
+  flex-grow: 1;
+  text-align: right;
+  margin: 0 20rpx;
+  color: gray;
+}
+
+.info-item .lb-icon-right-arrow {
+  line-height: 100rpx;
+  color: gray;
+}

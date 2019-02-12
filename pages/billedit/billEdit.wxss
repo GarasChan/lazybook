@@ -191,33 +191,44 @@
 
 .edit-foot .labels-content .labels-info {
   width: 170rpx;
+  line-height: 100rpx;
   font-size: 28rpx;
   text-align: center;
   color: gray;
-  border-right: 1px solid #e9e9e9;
+  /* border-right: 1px solid #e9e9e9; */
   padding: 0 28rpx;
+  background-color: #fff;
+  z-index: 1;
   box-sizing: border-box;
 }
 
-.edit-foot .labels-content .none-labels {
-  /* width: calc(100% - 170rpx); */
+/* .edit-foot .labels-content .none-labels {
+  width: calc(100% - 270rpx);
   font-size: 28rpx;
   color: gray;
   padding: 0 28rpx;
   box-sizing: border-box;
- }
+ } */
 
 .edit-foot .labels-content .content-labels {
-  width: calc(100% - 170rpx);
-  height: 100%;
+  width: calc(100% - 270rpx);
+  height: 50rpx;
+  line-height: 50rpx;
+  border-width:0 1px 0 1px;
+  border-style:solid;
+  border-color:#e9e9e9;
+  font-size: 28rpx;
+  color: gray;
+  padding: 0 28rpx;
+  box-sizing: border-box;
 }
 
-.labels-content .content-labels .labels-view {
+/* .labels-content .content-labels .labels-view {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-}
+} */
 
 /* .labels-content .content-labels .labels-view .label {
   width: 126rpx;
@@ -237,7 +248,6 @@
 .labels-content .add-label {
   z-index: 1;
   width: 100rpx;
-  /* height: 50rpx; */
   font-size: 64rpx;
   line-height: 100rpx;
   text-align: center;
