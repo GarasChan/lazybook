@@ -1,6 +1,5 @@
 const config = require('./config.js');
 
-
 let Util = {
 
   /**
@@ -188,15 +187,31 @@ let Util = {
     let bills = this.changeList2Bills(oldLists);
     bills = bills.concat(newBills);
     return this.changeBills2Lists(bills);
-    // const newLists = this.changeBills2Lists(newBills);
-    // if (newLists.length === 0 || oldLists.length === 0) return oldLists;
-    // let lists = [].concat(oldLists);
-    // if (newLists[0].date === lists[lastIdx].date) {
-    //   lists[lastIdx].items.push()
-    // }
-    // newLists.forEach(list => {
-      
-    // })
+  },
+
+  uploadImage: function (path, name) {
+    return new Promise((resolve, reject) => {
+      wx.uploadFile({
+        url: config.urlComponents.uploadUrl,
+        filePath: path,
+        header: {
+          skey: wx.getStorageSync('skey')
+        },
+        name,
+        success: res => {
+          const resObj = JSON.parse(res.data);
+          if (resObj.success) {
+            resolve({ name: resObj.name })
+            Util.showMessage('图片上传成功');
+          }
+        },
+        fail: err => {
+          Util.showMessage('图片上传失败');
+          reject(err);
+        }
+      })
+    })
+    
   }
 }
 

@@ -6,7 +6,7 @@ const app = getApp();
 
 Page({
   data: {
-    bookBackground: app.defaultImages.bookBackground,
+    bookBackground: config.defaultImages.bookBackground,
     currentPage: 0,
     bills: [],
     scrollTop: 0

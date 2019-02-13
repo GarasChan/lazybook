@@ -1,0 +1,82 @@
+/* pages/aboutus/aboutus.wxss */
+.container {
+  background-color: #fff;
+}
+
+.about-us-mian {
+  width: 100%;
+  text-align: center;
+}
+
+.about-us-mian image {
+  width: 400rpx;
+  height: 400rpx;
+  margin: 0 auto;
+}
+
+.about-us-mian .name {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 600
+}
+
+.about-us-mian .version {
+  font-size: 24rpx;
+  font-weight: 200;
+}
+
+.about-us-mian .label {
+  display: block;
+  font-size: 30rpx;
+  margin: 20rpx;
+}
+
+.about-us-list {
+  width: 100%;
+  margin-top: 40rpx;
+  background-color: #fff;
+}
+
+.about-us-list .about-us-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 40rpx;
+  border: 2rpx solid #e9e9e9;
+  box-sizing: border-box;
+}
+
+.about-us-item .title-name {
+
+}
+
+.about-us-item .icon {
+  color: gray;
+}
+
+.about-us-subitem {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-us-subitem .part {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40rpx;
+}
+
+.part .title {
+  font-size: 30rpx;
+  font-weight: 600;
+  text-align: center;
+  padding: 16rpx 0;
+}
+
+.part .item {
+  font-size: 28rpx;
+  padding: 8rpx 0;
+}
+
+.part .strong {
+  color: #ffa200;
+}

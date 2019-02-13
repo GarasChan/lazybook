@@ -14,6 +14,7 @@ Component({
    */
   data: {
     isShow: false,
+    isFocus: false,
     key: '',
     title: '请输入',
     value: ''
@@ -26,6 +27,7 @@ Component({
     show: function(value, key, title) {
       this.setData({
         isShow: true,
+        isFocus: true,
         key: key,
         title: title,
         value:value
@@ -35,6 +37,7 @@ Component({
     hide: function() {
       this.setData({
         isShow: false,
+        isFocus: false,
         key: '',
         title: '请输入',
         value: ''
@@ -49,8 +52,9 @@ Component({
 
     okEvent: function() {
       const data = {
+        value: this.data.value,
         key: this.data.key,
-        value: this.data.value
+        title: this.data.title
       }
       this.triggerEvent('confirmEvent', data);
     }

@@ -8,7 +8,8 @@
     "pages/bookinfo/bookInfo",
     "pages/mapviewer/mapViewer",
     "pages/billedit/billEdit",
-    "pages/myinfo/myInfo"
+    "pages/myinfo/myInfo",
+    "pages/aboutus/aboutUs"
   ],
   "permission": {
     "scope.userLocation": {
@@ -47,8 +48,8 @@
     ]
   },
   "networkTimeout": {
-    "request": 60000,
-    "downloadFile": 60000
+    "request": 5000,
+    "downloadFile": 5000
   },
   "debug": "true"
 }

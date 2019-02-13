@@ -1,12 +1,13 @@
 //index.js
 //获取应用实例
 const app = getApp();
-import util from '../../utils/util.js';
-import login from '../../utils/login.js'
+const config = require('../../utils/config.js');
+const util = require('../../utils/util.js');
+const login = require('../../utils/login.js');
 
 Page({
   data: {
-    loginBackground: app.defaultImages.loginBackground,
+    loginBackground: config.defaultImages.loginBackground,
     userInfo: {},
     isWeiChatUser: true,
     loginMsg: "手机号快速登录"
@@ -73,15 +74,6 @@ Page({
     }).catch(err => {
       _this.loginFail();
     })
-    // login.doLogin((obj) => {
-    //   wx.hideLoading();
-    //   if(obj.userInfo) {
-    //     this.loginSuccess(obj.userInfo);
-    //   } else {
-    //     this.loginFail();
-    //     util.showMessage('登录失败！');
-    //   }
-    // })
   },
 
   loginSuccess: (uesrInfo) => {

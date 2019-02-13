@@ -1,8 +1,8 @@
 <!--pages/myinfo/myInfo.wxml-->
 <view class='container'>
-  <view class='avatar'>
+  <view class='avatar' bindtap='changeAvatar'>
     <text>头像</text>
-    <image src='{{avatar}}' bindtap='changeAvatar'></image>
+    <image src='{{avatar}}' binderror='avatarErr' catchtap='previewAvatar'></image>
   </view>
   <view class='base-info'>
     <view class='info-item' data-key='name' data-title='昵称' bindtap='changeInfo'>
@@ -54,8 +54,13 @@
       <text class='icon lb-icon-right-arrow'></text>
     </view>
   </view>
-  <view class='save-info'>
+  <!-- <view class='save-info'>
     <button>保存</button>
-  </view>
+  </view> -->
 </view>
-<modal id='inputModal' bindconfirmEvent='confirmEvent'></modal>
+<modal id='inputModal' bindconfirmEvent='confirmEvent'>
+  <hmovable 
+    class='content-labels'
+    items='{{careerArr}}' 
+    bindchange='toggleLabel' />
+</modal>

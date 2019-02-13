@@ -46,6 +46,10 @@
   margin-top: 4px;
   font-size:12px;
   color: gray;
+  max-width: 450rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
 /* 记账信息 */

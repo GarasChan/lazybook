@@ -2,8 +2,13 @@
 <view class='container'>
   <view class='custom-setting'>
     <view class='info-item' bindtap='clearStorage'>
-      <text>清除缓存</text>
+      <text class='title'>清除缓存</text>
       <text class='value'>{{storageSize}} kb</text>
+      <text class='icon lb-icon-right-arrow'></text>
+    </view>
+     <view class='info-item' bindtap='checkUpdate'>
+      <text class='title'>检查更新</text>
+      <text class='value'>{{version}}</text>
       <text class='icon lb-icon-right-arrow'></text>
     </view>
   </view>

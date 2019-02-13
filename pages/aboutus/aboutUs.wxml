@@ -1,0 +1,28 @@
+<!--pages/aboutus/aboutus.wxml-->
+<view class='container'>
+  <view class='about-us-mian'>
+    <image src='{{logo}}' bindtap='previewLogo'></image>
+    <text class='name'>{{name}}</text>
+    <text class='version'>{{version}}</text>
+    <text class='label'>{{label}}</text>
+  </view>
+  <view class='about-us-list'>
+    <view class='about-us-item' bindtap='showDetail'>
+      <text class='title-name'>技术栈</text>
+      <text class='icon lb-icon-{{isShowDetail ? "top" : "bottom"}}-arrow'></text>
+    </view>
+    <view hidden='{{!isShowDetail}}' class='about-us-subitem'>
+      <view class='part'>
+        <text class='title'>客户端</text>
+        <text class='item'>采用原生小程序组件开发，未使用任何前段框架</text>
+      </view>
+      <view class='part'>
+        <text class='title'>服务端</text>
+        <text class='item'><text class='strong'>Express</text> -- 基于 Node.js 平台，快速、开放、极简的 Web 开发框架</text>
+        <text class='item'><text class='strong'>MySQL</text>-- 最流行的关系型数据库管理系统</text>
+        <text class='item'><text class='strong'>Axios</text> -- 基于 Promise 用于浏览器和 node.js 的 http 客户端</text>
+        <text class='item'><text class='strong'>Multer</text> -- 用于上传文件过程中处理 multipart / form-data 的 node.js 中间件</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,4 +1,5 @@
 // pages/my/my.js
+const config = require('../../utils/config.js');
 //获取应用实例
 const app = getApp();
 
@@ -8,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    myBackground: app.defaultImages.myBackground,
+    myBackground: config.defaultImages.myBackground,
     userInfo: ""
   },
 
@@ -16,87 +17,53 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo
-      })
+    let userInfo = app.globalData.userInfo;
+    if (userInfo) {
+      if (userInfo.avatar && userInfo.avatar.indexOf('https://') < 0) {
+        userInfo.avatar = config.host + 'resources/images/avatar/' + userInfo.avatar;
+      }
+      this.setData({ userInfo })
     }
   },
 
-  onShow: function() {
-    // if (app.globalData.userInfo) {
-    //   this.setData({
-    //     userInfo: app.globalData.userInfo
-    //   })
-    // }
+  avatarErr: function (e) {
+    this.setData({
+      'userInfo.avatar': '../../images/avatar.jpg'
+    })
+  },
+
+  go2userInfo: function () {
+    wx.navigateTo({
+      url: '../myinfo/myInfo',
+    })
   },
 
   openSetting: function() {
     wx.openSetting();
   },
 
-  go2page: function() {
+  go2systemSetting: function() {
     wx.navigateTo({
       url: '../systemsetting/systemSetting',
     })
-  },
+  }, 
 
-  go2userInfo: function() {
+  go2aboutUs: function() {
     wx.navigateTo({
-      url: '../myinfo/myInfo',
+      url: '../aboutus/aboutUs',
     })
-  },
-  
-  aa: function() {
-    console.log('长按');
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    this.setData({
+      'userInfo.avatar': app.globalData.userInfo.avatar + '?t=' + new Date().getTime(),
+      'userInfo.name': app.globalData.userInfo.name,
+      'userInfo.signature': app.globalData.userInfo.signature
+    }, () => {
+      wx.stopPullDownRefresh() //停止下拉刷新
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    
-  }
 })

@@ -237,6 +237,7 @@ Page({
   },
 
   changeLabel: function (value) {
+    if (!value) return;
     let val = value.split(/,|，/g),
       labels = this.data.labels,
       label = this.data.label;
@@ -340,12 +341,5 @@ Page({
         console.log(err);
       }
     })
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

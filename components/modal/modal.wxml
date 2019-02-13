@@ -7,10 +7,11 @@
     <view class='content'>
       <input type='text'
         value='{{value}}'
-        focus='{{true}}'
+        focus='{{isFocus}}'
         placeholder='请输入{{title}}'
         cursor-spacing='100'
-        bindinput='inputEvent'></input>
+        bindinput='inputEvent'>
+      </input>
     </view>
     <view class='footer'>
       <text class='cancel' catchtap='hide'>取消</text>

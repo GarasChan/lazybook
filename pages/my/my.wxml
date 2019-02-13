@@ -2,7 +2,7 @@
 <view class='container'>
   <view class='info-container' style='background-image: url({{myBackground}})'>
     <view class='userinfo' bindtap='go2userInfo'>
-      <image class='userinfo-avatar' src="{{userInfo.avatar}}" mode="cover"></image>
+      <image class='userinfo-avatar' binderror='avatarErr' src="{{userInfo.avatar}}"></image>
       <view class='userinfo-info'>
         <text class='info-nickname'>{{userInfo.name}}</text>
         <text class='info-signature'>{{userInfo.signature || '该用户没有留下任何信息'}}</text>
@@ -17,10 +17,10 @@
         <text class='value'>3645</text>
         <text class='info'>记账笔数</text>
       </view>
-      <view class='bookinfo-others'>
+      <!-- <view class='bookinfo-others'>
         <text class='value'>6745765</text>
         <text class='info'>其他</text>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class='my-setting-list'>
@@ -29,17 +29,17 @@
       <text class='item-title'>权限管理</text>
       <text class='icon lb-icon-right-arrow item-right'></text>
     </view>
-    <view class='my-setting-item' bindtap='go2page'>
+    <view class='my-setting-item' bindtap='go2systemSetting'>
       <text class='icon lb-icon-setting item-left' style='color:red'></text>
       <text class='item-title'>系统设置</text>
       <text class='icon lb-icon-right-arrow item-right'></text>
     </view>
-    <view class='my-setting-item'>
+    <view class='my-setting-item' bindtap='go2aboutUs'>
       <text class='icon lb-icon-about item-left' style='color:green'></text>
       <text class='item-title'>关于账本</text>
       <text class='icon lb-icon-right-arrow item-right'></text>
     </view>
-     <view class='my-setting-item'>
+    <view class='my-setting-item'>
       <text class='icon lb-icon-share item-left' style='color:blue'></text>
       <text class='item-title'>推荐我们</text>
       <text class='icon lb-icon-right-arrow item-right'></text>

@@ -60,8 +60,7 @@ const iconsConfig = {
       { name: '船票', icon: 'lunchuan' },
       { name: '机票', icon: 'feiji' },
       { name: '火车票', icon: 'huoche' },
-      { name: '公共交通', icon: 'gongjiao' },
-      { name: '酒店', icon: 'jiudian' },
+      { name: '公共交通', icon: 'gongjiao' }
     ],
 
     // 居家生活

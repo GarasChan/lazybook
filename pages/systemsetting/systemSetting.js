@@ -8,10 +8,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    storageSize: 0
+    storageSize: 0,
+    version: config.programInfo.version,
+  },  
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    const storageSize = wx.getStorageInfoSync().currentSize;
+    this.setData({ storageSize });
   },
 
-  exitLogin: function() {
+  exitLogin: function () {
     wx.showModal({
       title: '提示',
       content: '确定退出当前账号',
@@ -24,14 +33,6 @@ Page({
         }
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    const storageSize = wx.getStorageInfoSync().currentSize;
-    this.setData({ storageSize });
   },
 
   clearStorage: function() {
@@ -50,52 +51,11 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  checkUpdate: function() {
+    util.showLoading('获取版本信息...');
+    setTimeout(() => {
+      util.hideLoading();
+      util.showMessage('当前已是最新版本');
+    }, 1500)
   }
 })
