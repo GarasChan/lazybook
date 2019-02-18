@@ -11,6 +11,7 @@ let config = {
     userUrl: `https://www.garaschan.online:4290/lazybook/wx/user`,
     billUrl: `https://www.garaschan.online:4290/lazybook/wx/bill`,
     uploadUrl: `https://www.garaschan.online:4290/lazybook/wx/upload`,
+    countUrl: 'http://127.0.0.1:4290/lazybook/wx/statistics/count'
   },
 
   //默认图片路径

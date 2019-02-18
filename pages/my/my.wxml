@@ -10,11 +10,11 @@
     </view>
     <view class='bookinfo'>
       <view class='bookinfo-days'>
-        <text class='value'>123</text>
+        <text class='value'>{{allDays}}</text>
         <text class='info'>记账天数</text>
       </view>
       <view class='bookinfo-nums'>
-        <text class='value'>3645</text>
+        <text class='value'>{{allTimes}}</text>
         <text class='info'>记账笔数</text>
       </view>
       <!-- <view class='bookinfo-others'>

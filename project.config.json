@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.5.2",
 	"appid": "wx408ec043ed2eaaa1",
-	"projectname": "FirstApplication",
+	"projectname": "lazybook",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

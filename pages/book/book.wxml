@@ -4,11 +4,11 @@
     <image class='book-bgimg' src='{{bookBackground}}'></image>
     <!-- <text class='book-name'>个人账本</text> -->
     <view class='total-wrapper total-income'>
-      <text class='price'>1238.23</text>
+      <text class='price'>{{totalIncome}}</text>
       <text class='info'>总收入</text>
     </view>
     <view class='total-wrapper total-expense'>
-      <text class='price'>113128.42</text>
+      <text class='price'>{{totalExpense}}</text>
       <text class='info'>总支出</text>
     </view>
   </view>

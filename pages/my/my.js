@@ -1,5 +1,6 @@
 // pages/my/my.js
 const config = require('../../utils/config.js');
+const util = require('../../utils/util.js');
 //获取应用实例
 const app = getApp();
 
@@ -10,7 +11,9 @@ Page({
    */
   data: {
     myBackground: config.defaultImages.myBackground,
-    userInfo: ""
+    userInfo: "",
+    allDays: 0,
+    allTimes: 0
   },
 
   /**
@@ -24,6 +27,15 @@ Page({
       }
       this.setData({ userInfo })
     }
+  },
+
+  onShow: function() {
+    this.getCountStatistics(false);
+    this.setData({
+      'userInfo.avatar': app.globalData.userInfo.avatar + '?t=' + new Date().getTime(),
+      'userInfo.name': app.globalData.userInfo.name,
+      'userInfo.signature': app.globalData.userInfo.signature
+    })
   },
 
   avatarErr: function (e) {
@@ -58,12 +70,34 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.getCountStatistics(true);
     this.setData({
       'userInfo.avatar': app.globalData.userInfo.avatar + '?t=' + new Date().getTime(),
       'userInfo.name': app.globalData.userInfo.name,
       'userInfo.signature': app.globalData.userInfo.signature
     }, () => {
-      wx.stopPullDownRefresh() //停止下拉刷新
+      wx.stopPullDownRefresh(false) //停止下拉刷新
     })
   },
+
+  getCountStatistics: function (isPullDown) {
+    const _this = this;
+    isPullDown && util.showLoading('数据更新中...')
+    util.request({
+      url: config.urlComponents.countUrl,
+      method: 'GET',
+      success: res => {
+        if (res.data.allDays && res.data.allTimes) {
+          _this.setData({
+            allDays: res.data.allDays,
+            allTimes: res.data.allTimes
+          })
+          isPullDown && util.showMessage('数据更新成功');
+        }
+      },
+      fail: err => {
+        util.showMessage('信息获取失败');
+      }
+    })
+  }
 })

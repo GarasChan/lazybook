@@ -9,7 +9,9 @@ Page({
     bookBackground: config.defaultImages.bookBackground,
     currentPage: 0,
     bills: [],
-    scrollTop: 0
+    scrollTop: 0,
+    totalIncome: 0,
+    totalExpense: 0
   },
 
   onLoad: function () {
@@ -121,6 +123,7 @@ Page({
           currentPage,
           bills
         }, () => {
+          _this.getPriceStatistics();
           callBack && callBack(true);
         })
       },
@@ -129,5 +132,17 @@ Page({
       }
     })    
   },
+
+  getPriceStatistics: function() {
+    let income = 0, expense = 0;
+    this.data.bills.forEach(item => {
+      income += item.income;
+      expense += item.expense;
+    })
+    this.setData({
+      totalIncome: income,
+      totalExpense: expense
+    })
+  }
 
 })
