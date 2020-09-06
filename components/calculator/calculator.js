@@ -199,7 +199,6 @@ Component({
               this.triggerEvent('confirmEvent', { result });
             }
           } catch(ex) {
-            console.log(ex);
           } finally {
             this.hideCalculator();
           }

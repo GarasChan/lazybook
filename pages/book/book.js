@@ -19,19 +19,19 @@ Page({
     this.init();
   },
 
-  init: function() {
+  init: function () {
     this.setData({
       currentPage: 0,
       scroll2View: 'top'
     })
-    this.loadMoreBtn.init();
+    this.loadMoreBtn && this.loadMoreBtn.init();
     this.loadData(true);
   },
 
-  go2detail: function(e) {
+  go2detail: function (e) {
     const outerId = e.currentTarget.dataset.id,
-          innerId = e.detail.id,
-          date = this.data.bills[outerId].date;
+      innerId = e.detail.id,
+      date = this.data.bills[outerId].date;
     let data = Object.assign({}, this.data.bills[outerId].items[innerId], { date })
     wx.navigateTo({
       url: `../bookinfo/bookInfo?info=${JSON.stringify(data)}`,
@@ -50,27 +50,24 @@ Page({
       success: res => {
         if (res.confirm) {
           const id = bills[outerId].items[innerId].id;
-          util.request({
-            url: `${config.urlComponents.billUrl}?id=${id}`,
-            method: 'DELETE',
-            success: res => {
-              if (res.data.success) {
-                util.showMessage('删除成功');
-                bills[outerId].items.splice(innerId, 1);
-                if (bills[outerId].items.length === 0) {
-                  bills.splice(outerId, 1);
-                }
-                this.setData({ bills });
-              }
-            },
-            fail: res => {
-              util.showMessage('删除失败');
+          wx.cloud.callFunction({
+            name: 'removeBill',
+            data: {
+              id
             }
+          }).then(res => {
+            util.showMessage('删除成功');
+            bills[outerId].items.splice(innerId, 1);
+            if (bills[outerId].items.length === 0) {
+              bills.splice(outerId, 1);
+            }
+            this.setData({ bills });
+          }).catch(res => {
+            util.showMessage('删除失败');
           })
         }
       }
     })
-    let data = Object.assign({}, this.data.bills[outerId].items[innerId], { date })
   },
 
   //下拉刷新事件
@@ -103,37 +100,38 @@ Page({
   },
 
   loadData: function (isReload, callBack) {
-    const _this = this;
     let currentPage = isReload ? 1 : this.data.currentPage + 1;
-    util.request({
-      url: `${config.urlComponents.billUrl}?currentPage=${currentPage}&pageSize=${config.pageSize}`,
-      method: 'GET',
-      success: res => {
-        // 没有更多账单了
-        if(res.data.length < config.pageSize) {
-          currentPage = -1;
-        }
-        let bills = [];
-        if(isReload) {
-          bills = util.changeBills2Lists(res.data);
-        } else {
-          bills = util.addBills2Lists(this.data.bills, res.data)
-        }
-        _this.setData({
-          currentPage,
-          bills
-        }, () => {
-          _this.getPriceStatistics();
-          callBack && callBack(true);
-        })
-      },
-      fail: err => {
-        callBack && callBack(false);
+    wx.cloud.callFunction({
+      name: 'queryBill',
+      data: {
+        currentPage,
+        pageSize: config.pageSize
       }
-    })    
+    }).then(res => {
+      const datas = res.result.data;
+      // 没有更多账单了
+      if (datas.length < config.pageSize) {
+        currentPage = -1;
+      }
+      let bills = [];
+      if (isReload) {
+        bills = util.changeBills2Lists(datas);
+      } else {
+        bills = util.addBills2Lists(this.data.bills, datas)
+      }
+      this.setData({
+        currentPage,
+        bills
+      }, () => {
+        this.getPriceStatistics();
+        callBack && callBack(true);
+      })
+    }).catch(() => {
+      callBack && callBack(false);
+    })
   },
 
-  getPriceStatistics: function() {
+  getPriceStatistics: function () {
     let income = 0, expense = 0;
     this.data.bills.forEach(item => {
       income += item.income;

@@ -1,55 +1,56 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/book/book",
-    "pages/statistics/statistics",
-    "pages/my/my",
-    "pages/systemsetting/systemSetting",
-    "pages/bookinfo/bookInfo",
-    "pages/mapviewer/mapViewer",
-    "pages/billedit/billEdit",
-    "pages/myinfo/myInfo",
-    "pages/aboutus/aboutUs"
-  ],
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于记录当前所处位置"
-    }
-  },
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#313131",
-    "navigationBarTitleText": "懒人记账",
-    "navigationBarTextStyle": "white"
-  },
-  "tabBar": {
-    "backgroundColor": "#36373d",
-    "color": "#fff",
-    "selectedColor": "#ffa200",
-    "list": [
-      {
-        "pagePath": "pages/statistics/statistics",
-        "text": "统计",
-        "iconPath": "images/tabbar/statistics.png",
-        "selectedIconPath": "images/tabbar/statistics_on.png"
-      },
-      {
-        "pagePath": "pages/book/book",
-        "text": "账单",
-        "iconPath": "images/tabbar/book.png",
-        "selectedIconPath": "images/tabbar/book_on.png"
-      },
-      {
-        "pagePath": "pages/my/my",
-        "text": "我的",
-        "iconPath": "images/tabbar/my.png",
-        "selectedIconPath": "images/tabbar/my_on.png"
-      }
-    ]
-  },
-  "networkTimeout": {
-    "request": 5000,
-    "downloadFile": 5000
-  },
-  "debug": "true"
+    "pages": [
+        "pages/index/index",
+        "pages/book/book",
+        "pages/statistics/statistics",
+        "pages/my/my",
+        "pages/systemsetting/systemSetting",
+        "pages/bookinfo/bookInfo",
+        "pages/mapviewer/mapViewer",
+        "pages/billedit/billEdit",
+        "pages/myinfo/myInfo",
+        "pages/aboutus/aboutUs"
+    ],
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于记录当前所处位置"
+        }
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#313131",
+        "navigationBarTitleText": "懒人记账",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "backgroundColor": "#36373d",
+        "color": "#fff",
+        "selectedColor": "#ffa200",
+        "list": [
+            {
+                "pagePath": "pages/statistics/statistics",
+                "text": "统计",
+                "iconPath": "images/tabbar/statistics.png",
+                "selectedIconPath": "images/tabbar/statistics_on.png"
+            },
+            {
+                "pagePath": "pages/book/book",
+                "text": "账单",
+                "iconPath": "images/tabbar/book.png",
+                "selectedIconPath": "images/tabbar/book_on.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "images/tabbar/my.png",
+                "selectedIconPath": "images/tabbar/my_on.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 5000,
+        "downloadFile": 5000
+    },
+    "debug": true,
+    "sitemapLocation": "sitemap.json"
 }

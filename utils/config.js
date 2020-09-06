@@ -11,18 +11,19 @@ let config = {
     userUrl: `https://www.garaschan.online:4290/lazybook/wx/user`,
     billUrl: `https://www.garaschan.online:4290/lazybook/wx/bill`,
     uploadUrl: `https://www.garaschan.online:4290/lazybook/wx/upload`,
-    countUrl: 'http://127.0.0.1:4290/lazybook/wx/statistics/count'
+    countUrl: 'https://www.garaschan.online:4290/lazybook/wx/statistics/count',
+    titleUrl: 'https://www.garaschan.online:4290/lazybook/wx/statistics/title'
   },
 
   //默认图片路径
   defaultImages: {
-    loginBackground: `https://www.garaschan.online:4290/resources/images/background/login.jpg`,
-    bookBackground: `https://www.garaschan.online:4290/resources/images/background/book.jpg`,
-    myBackground: `https://www.garaschan.online:4290/resources/images/background/my.jpg`,
+    loginBackground: `https://6761-garaschan-1257763678.tcb.qcloud.la/lazybook/images/background/login.jpg?sign=85d09d7a48ccd1abc3a3f1854305464e&t=1599363192`,
+    bookBackground: `https://6761-garaschan-1257763678.tcb.qcloud.la/lazybook/images/background/book.jpg?sign=a3b0f79f6d2ebf5232e09fbdde8e8e49&t=1599132866`,
+    myBackground: `https://6761-garaschan-1257763678.tcb.qcloud.la/lazybook/images/background/my.jpg?sign=0a615ba51e6fd4c3402e350d42adb5c3&t=1599132901`,
   },
 
   //单页账单数量
-  pageSize: 10,
+  pageSize: 15,
 
   // 小程序相关信息
   programInfo: {

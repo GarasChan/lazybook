@@ -12,23 +12,27 @@
       <text class='info'>总支出</text>
     </view>
   </view>
-  <scroll-view class='bills-list' 
-    scroll-y='true' 
-    lower-threshold='40rpx'
-    scroll-into-view='{{scroll2View}}'
-    enable-back-to-top='{{true}}'
-    bindscrolltolower='loadMoreData'>
-    <text id='top'></text>
-    <book-list-item wx:for='{{bills}}'  wx:key='index'
-      date='{{item.date}}'
-      scroll-top='{{scrollTop}}'
-      income='{{item.income}}'
-      expense='{{item.expense}}'
-      items='{{item.items}}' 
-      bindgo2detail='go2detail'
-      binddelBill='delBill'
-      data-id='{{index}}'/>
-      <load-more id='loadMore'/>
-  </scroll-view>
+  <view class='bills-content'>
+    <scroll-view wx:if='{{bills.length}}'
+      class='bills-list' 
+      scroll-y='true' 
+      lower-threshold='40rpx'
+      scroll-into-view='{{scroll2View}}'
+      enable-back-to-top='{{true}}'
+      bindscrolltolower='loadMoreData'>
+      <text id='top'></text>
+      <book-list-item wx:for='{{bills}}'  wx:key='index'
+        date='{{item.date}}'
+        scroll-top='{{scrollTop}}'
+        income='{{item.income}}'
+        expense='{{item.expense}}'
+        items='{{item.items}}' 
+        bindgo2detail='go2detail'
+        binddelBill='delBill'
+        data-id='{{index}}'/>
+    </scroll-view>
+    <no-data wx:else />
+    <load-more id='loadMore'/>
+  </view>
   <navigator url='../billedit/billEdit' class='icon lb-icon-add-empty add-bill'></navigator>
 </view>

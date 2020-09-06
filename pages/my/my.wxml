@@ -24,11 +24,11 @@
     </view>
   </view>
   <view class='my-setting-list'>
-    <view class='my-setting-item' bindtap='openSetting'>
+    <button class='my-setting-item' open-type="openSetting">
       <text class='icon lb-icon-permissions item-left' style='color:orange'></text>
       <text class='item-title'>权限管理</text>
       <text class='icon lb-icon-right-arrow item-right'></text>
-    </view>
+    </button>
     <view class='my-setting-item' bindtap='go2systemSetting'>
       <text class='icon lb-icon-setting item-left' style='color:red'></text>
       <text class='item-title'>系统设置</text>
@@ -39,7 +39,7 @@
       <text class='item-title'>关于账本</text>
       <text class='icon lb-icon-right-arrow item-right'></text>
     </view>
-    <view class='my-setting-item'>
+    <view class='my-setting-item' bindtap='go2recommendUs'>
       <text class='icon lb-icon-share item-left' style='color:blue'></text>
       <text class='item-title'>推荐我们</text>
       <text class='icon lb-icon-right-arrow item-right'></text>

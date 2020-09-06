@@ -2,7 +2,8 @@
   "navigationBarTitleText": "账本",
   "usingComponents": {
     "book-list-item": "../../components/booklistitem/booklistitem",
-    "load-more": "../../components/loadmore/loadmore"
+    "load-more": "../../components/loadmore/loadmore",
+    "no-data": "../../components/nodata/nodata"
   },
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "light",

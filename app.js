@@ -3,27 +3,37 @@ import config from './utils/config.js';
 //app.js
 App({
   onLaunch: function () {
-    
-    // if (!login.checkLogin()) {
-    //   wx.redirectTo({
-    //     url: './pages/index/index'
-    //   })
-    //   return;
-    // }
-    // login.getUserInfo().then(res => {
-    //   _this.globalData.userInfo = res.userInfo;
-    //   //跳转到主页面
-    //   wx.switchTab({
-    //     url: './pages/book/book'
-    //   })
-    // }).catch(err => {
-    //   wx.redirectTo({
-    //     url: './pages/index/index'
-    //   })
-    // })
+    if (!wx.cloud) {
+      console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+    } else {
+      wx.cloud.init({
+        env: 'garaschan',
+        traceUser: true,
+      })
+    }
+    let _this = this;
+    // 获取设备信息
+    try {
+      const systemInfo = wx.getStorageSync('systemInfo');
+      if (!systemInfo) {
+        wx.getSystemInfo({
+          success(res) {
+            _this.globalData.systemInfo = Object.assign({}, res)
+          }
+        })
+      }
+    } catch (e) {
+      wx.getSystemInfo({
+        success(res) {
+          _this.globalData.systemInfo = Object.assign({}, res)
+        }
+      })
+    }
   },
 
   globalData: {
-    userInfo: null
+    openid: null,
+    userInfo: null,
+    systemInfo: null
   }
 })

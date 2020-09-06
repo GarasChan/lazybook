@@ -102,6 +102,10 @@ let Util = {
     return Object.prototype.toString.call(value) === '[object Array]';
   },
 
+  isObject: (value) => {
+    return Object.prototype.toString.call(value) === '[object Object]';
+  },
+
   code2gender: (code) => {
     code = parseInt(code);
     switch (code) {
@@ -129,7 +133,7 @@ let Util = {
     }
   },
 
-  changeBills2Lists: function(bills) {
+  changeBills2Lists: function (bills) {
     let lists = [];
     bills.forEach((bill) => {
       const date = this.formatTime(new Date(bill.date)).date;
@@ -138,7 +142,7 @@ let Util = {
         return list.date === date;
       })
       const itemObj = {
-        id: bill.id,
+        id: bill._id,
         bookType: bill.bookType,
         iconType: bill.iconType,
         title: bill.title,
@@ -146,6 +150,7 @@ let Util = {
         color: bill.color,
         price: bill.price,
         label: bill.label,
+        description: bill.description,
         time,
         position: bill.position,
         recorder: bill.recorder,
@@ -183,7 +188,7 @@ let Util = {
     return bills;
   },
 
-  addBills2Lists: function(oldLists, newBills) {
+  addBills2Lists: function (oldLists, newBills) {
     let bills = this.changeList2Bills(oldLists);
     bills = bills.concat(newBills);
     return this.changeBills2Lists(bills);
@@ -211,7 +216,32 @@ let Util = {
         }
       })
     })
-    
+  },
+
+  uploadFile: (filePath, cloudPath) => {
+    return new Promise((resolve, reject) => {
+      wx.getFileSystemManager().readFile({
+        filePath: filePath,
+        encoding: 'base64',
+        success: res => {
+          wx.cloud.callFunction({
+            name: 'uploadFile',
+            data: {
+              saveField: 'avatar',
+              cloudPath,
+              file: res.data
+            }
+          }).then(res => {
+            resolve(res);
+          }).catch(err => {
+            reject(err);
+          })
+        },
+        fail: err => {
+          reject(err);
+        }
+      })
+    })
   }
 }
 

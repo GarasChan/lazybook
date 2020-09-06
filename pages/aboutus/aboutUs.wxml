@@ -14,7 +14,7 @@
     <view hidden='{{!isShowDetail}}' class='about-us-subitem'>
       <view class='part'>
         <text class='title'>客户端</text>
-        <text class='item'>采用原生小程序组件开发，未使用任何前段框架</text>
+        <text class='item'><text class='strong'>AntV F2</text> -- F2 是一个专注于移动，开箱即用的可视化解决方案，完美支持 H5 环境同时兼容多种环境（Node, 小程序，Weex）</text>
       </view>
       <view class='part'>
         <text class='title'>服务端</text>

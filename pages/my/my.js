@@ -50,10 +50,6 @@ Page({
     })
   },
 
-  openSetting: function() {
-    wx.openSetting();
-  },
-
   go2systemSetting: function() {
     wx.navigateTo({
       url: '../systemsetting/systemSetting',
@@ -66,6 +62,10 @@ Page({
     })
   },
 
+  go2recommendUs: function() {
+    util.showMessage('努力开发中...');
+  },
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -76,28 +76,24 @@ Page({
       'userInfo.name': app.globalData.userInfo.name,
       'userInfo.signature': app.globalData.userInfo.signature
     }, () => {
-      wx.stopPullDownRefresh(false) //停止下拉刷新
+      wx.stopPullDownRefresh(false); //停止下拉刷新
     })
   },
 
   getCountStatistics: function (isPullDown) {
     const _this = this;
     isPullDown && util.showLoading('数据更新中...')
-    util.request({
-      url: config.urlComponents.countUrl,
-      method: 'GET',
-      success: res => {
-        if (res.data.allDays && res.data.allTimes) {
-          _this.setData({
-            allDays: res.data.allDays,
-            allTimes: res.data.allTimes
-          })
-          isPullDown && util.showMessage('数据更新成功');
-        }
-      },
-      fail: err => {
-        util.showMessage('信息获取失败');
-      }
+    wx.cloud.callFunction({
+      name: 'calcBillCount'
+    }).then(({result}) => {
+      _this.setData({
+        allDays: result.allDays,
+        allTimes: result.allTimes
+      })
+      isPullDown && util.showMessage('数据更新成功');
+    }).catch(err => {
+      util.hideLoading();
+      util.showMessage('信息获取失败');
     })
   }
 })

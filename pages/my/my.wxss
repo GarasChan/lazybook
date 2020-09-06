@@ -40,6 +40,10 @@
 
 .info-nickname {
   font-size:18px;
+  max-width: 350rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .info-signature {
@@ -82,6 +86,7 @@
 }
 
 .my-setting-list {
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -93,6 +98,7 @@
 
 /* 设置单项 */
 .my-setting-item {
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -100,6 +106,11 @@
   padding: 12px 0;
   border-bottom: 1px solid #e9e9e9;
   box-sizing: border-box;
+}
+
+button.my-setting-item {
+  position: static;
+  text-align: left;
 }
 
 .my-setting-item .item-left {

@@ -47,7 +47,7 @@
 }
 
 .about-us-item .title-name {
-
+  font-size: 40rpx;
 }
 
 .about-us-item .icon {
@@ -57,6 +57,7 @@
 .about-us-subitem {
   display: flex;
   flex-direction: column;
+  padding-bottom:16rpx;
 }
 
 .about-us-subitem .part {
@@ -66,14 +67,14 @@
 }
 
 .part .title {
-  font-size: 30rpx;
+  font-size: 36rpx;
   font-weight: 600;
   text-align: center;
   padding: 16rpx 0;
 }
 
 .part .item {
-  font-size: 28rpx;
+  font-size: 32rpx;
   padding: 8rpx 0;
 }
 

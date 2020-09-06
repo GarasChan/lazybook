@@ -1,1 +1,63 @@
 /* pages/statistics.wxss */
+.statistics .chart {
+  width: 100%;
+  height: 400rpx;
+  position: relative;
+}
+
+.statistics .chart .center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+}
+
+.statistics .chart .center .price {
+  color: #666;
+  font-weight: 600;
+  font-size: 12px;
+  margin: 4px;
+  text-align: center;
+  width: 150rpx;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+
+.statistics .chart .center .info {
+  color: #999;
+  font-size: 10px;
+}
+
+.statistics .chart .center .toggle {
+  color: #ffa200;
+  font-size: 14px;
+}
+
+#titlePie {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.statistics .detail-list {
+  width: 100%;
+  height: calc(100% - 400rpx);
+  padding: 0 40rpx;
+  /* background-color: #fff; */
+}
+
+.statistics .detail-list .no-more {
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  padding: 8rpx;
+  color: gray;
+  /* background-color: #eee; */
+}
+

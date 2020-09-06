@@ -49,11 +49,18 @@
   border-bottom: 2rpx solid #eee;
 }
 
+.info-item .info {
+  flex-shrink: 0;
+}
+
 .info-item .value {
   flex-grow: 1;
   text-align: right;
   margin: 0 20rpx;
   color: gray;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden
 }
 
 .info-item .lb-icon-right-arrow {

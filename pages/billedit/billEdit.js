@@ -53,7 +53,7 @@ Page({
       info.iconType = iconsConfig.iconTypes[bookIdx][iconIdx];
       info.multiIndex = [bookIdx, iconIdx];
       info.icons = iconsConfig[info.bookType.key][info.iconType.key];
-      info.label = info.label && info.label.split(/,|，/g);
+      info.label = info.label ? info.label.split(/,|，/g) : [];
       // info.label = info.label && info.label.replace(',', '&ensp;');
       data = Object.assign({}, info);
     } else {
@@ -69,19 +69,19 @@ Page({
       }
     }
     data.labels = wx.getStorageSync('labels') || [];
-    this.setData( data );
+    this.setData(data);
   },
 
-  changePrice: function() {
+  changePrice: function () {
     this.calculator.showCalculator(this.data.price);
   },
 
-  confirmPrice: function(e) {
+  confirmPrice: function (e) {
     const price = e.detail.result;
     this.setData({ price });
   },
 
-  changeBookType: function(e) {
+  changeBookType: function (e) {
     const column = e.detail.column,
       idx = e.detail.value;
     let data = this.data.multiArray;
@@ -108,17 +108,17 @@ Page({
     })
   },
 
-  changeIcon: function(e) {
+  changeIcon: function (e) {
     const icon = this.data.icons[e.currentTarget.dataset.idx];
     this.setData({ icon });
   },
 
-  changeColor: function(e) {
+  changeColor: function (e) {
     const color = this.data.colors[e.target.dataset.idx];
     this.setData({ color });
   },
 
-  showChangeDescriptionModal: function() {
+  showChangeDescriptionModal: function () {
     this.textModal.showModal('textarea', 'changeDescription', this.data.description);
   },
 
@@ -128,8 +128,8 @@ Page({
     })
   },
 
-  toggleLabel: function(e) {
-    this.setData({ 
+  toggleLabel: function (e) {
+    this.setData({
       label: e.detail.selectedItems
     });
     // let label = this.data.label ? this.data.label.split('&ensp;') : [],
@@ -144,7 +144,7 @@ Page({
     // });
   },
 
-  changeDate: function(e) {
+  changeDate: function (e) {
     this.setData({
       date: e.detail.value
     })
@@ -156,7 +156,7 @@ Page({
     })
   },
 
-  changePosition: function() {
+  changePosition: function () {
     const _this = this;
     wx.showActionSheet({
       itemList: ['删除位置信息', '更改位置信息'],
@@ -205,7 +205,7 @@ Page({
     })
   },
 
-  showLabelModal: function(e) {
+  showLabelModal: function (e) {
     this.textModal.showModal('text', 'changeLabel');
   },
 
@@ -221,7 +221,7 @@ Page({
   //   this.textModal.showModal('textarea', 'changeLabel', label);
   // },
 
-  okEvent: function(e) {
+  okEvent: function (e) {
     if (e.detail.property === 'changeLabel') {
       this.changeLabel(e.detail.value);
     } else if (e.detail.property === 'changeDescription') {
@@ -244,7 +244,7 @@ Page({
 
     const idx = labels.indexOf(value);
     if (idx > -1) {
-      if(label.indexOf(value)) {
+      if (label.indexOf(value)) {
         return;
       }
       label.push(value);
@@ -282,8 +282,11 @@ Page({
   //   });
   // },
 
-  saveBill: function() {
-    const _this = this;
+  saveBill: function () {
+    if (this.data.price === 0) {
+      util.showMessage('请输入正确的金额');
+      return;
+    }
     const data = {
       bookType: this.data.multiIndex[0],
       title: this.data.icon.name,
@@ -298,48 +301,50 @@ Page({
       position: this.data.position && this.data.position.address,
       longitude: this.data.position && this.data.position.longitude,
       latitude: this.data.position && this.data.position.latitude,
-      description:this.data.description || ''
+      description: this.data.description || ''
     }
-    let method = 'POST';
-    if (!this.data.isNew) {
-      method = 'PUT';
+    if (this.data.isNew) {
+      wx.cloud.callFunction({
+        name: 'addBill',
+        data
+      }).then(() => {
+        this.saveBillSucceed(data);
+      })
+    } else {
       data.id = this.data.id;
+      wx.cloud.callFunction({
+        name: 'updateBill',
+        data
+      }).then(() => {
+        this.saveBillSucceed(data);
+      })
     }
-    util.request({
-      url: config.urlComponents.billUrl,
-      method,
-      data,
-      success: res => {
-        if(res.data.success) {
-          //保存常用标签到本地缓存
-          wx.setStorage({
-            key: 'labels',
-            data: _this.data.labels
-          })
-          const pages = getCurrentPages();
-          const page = pages[pages.length - 2];
-          if (page.route === 'pages/bookinfo/bookInfo') {
-            // 更新bookInfo
-            page.updateData(data);
-            // 更新book
-            const bookPage = pages.find(page => {
-              return page.route === 'pages/book/book';
-            })
-            bookPage.loadData(true);
-          }
-          if (page.route === 'pages/book/book') {
-            // 更新book
-            // data.id = res.data.id;
-            page.loadData(true);
-          }
-          wx.navigateBack({
-            delta: 1
-          })
-        }
-      },
-      fail: err => {
-        console.log(err);
-      }
+  },
+
+  saveBillSucceed: function (data) {
+    //保存常用标签到本地缓存
+    wx.setStorage({
+      key: 'labels',
+      data: this.data.labels
+    })
+    const pages = getCurrentPages();
+    const page = pages[pages.length - 2];
+    if (page.route === 'pages/bookinfo/bookInfo') {
+      // 更新bookInfo
+      page.updateData(data);
+      // 更新book
+      const bookPage = pages.find(page => {
+        return page.route === 'pages/book/book';
+      })
+      bookPage.loadData(true);
+    }
+    if (page.route === 'pages/book/book') {
+      // 更新book
+      // data.id = res.data.id;
+      page.loadData(true);
+    }
+    wx.navigateBack({
+      delta: 1
     })
   }
 })

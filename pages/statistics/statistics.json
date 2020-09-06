@@ -1,3 +1,8 @@
 {
-  "navigationBarTitleText": "统计"
+  "navigationBarTitleText": "统计",
+  "usingComponents": {
+    "ff-canvas": "@antv/f2-canvas",
+    "title-stastics-item": "../../components/titlestasticsitem/titlestasticsitem",
+    "no-data": "../../components/nodata/nodata"
+  }
 }

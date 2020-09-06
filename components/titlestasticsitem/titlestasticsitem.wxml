@@ -1,0 +1,12 @@
+<!--components/titlestasticsitem/titlestasticsitem.wxml-->
+<view class='title-stastics-item'>
+  <text class='left icon lb-icon-{{icon}}' style='background-color: {{color}}'></text>
+  <view class='center'>
+    <text class='title'>{{title}}</text>
+    <view class='bottom'>
+      <text class='percent'>{{percent}}%</text>
+      <text class='count'>{{count}}笔</text>
+    </view>
+  </view>
+  <text class='right'>{{price}}</text>
+</view>

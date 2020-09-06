@@ -110,21 +110,19 @@ Page({
         if (res.confirm) {
           //获取book页面实例
           const bookInstance = getCurrentPages()[0];
-          util.request({
-            url: `${config.urlComponents.billUrl}?id=${id}`,
-            method: 'DELETE',
-            success: res => {
-              if (res.data.success) {
-                util.showMessage('删除成功');
-                bookInstance.loadData(true);
-                wx.navigateBack({
-                  delta: 1
-                })
-              }
-            },
-            fail: res => {
-              util.showMessage('删除失败');
+          wx.cloud.callFunction({
+            name: 'removeBill',
+            data: {
+              id
             }
+          }).then(res => {
+            util.showMessage('删除成功');
+            bookInstance.loadData(true);
+            wx.navigateBack({
+              delta: 1
+            })
+          }).catch(err => {
+            util.showMessage('删除失败');
           })
         }
       }

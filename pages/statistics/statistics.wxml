@@ -1,4 +1,28 @@
 <!--pages/statistics/statistics.wxml-->
-<view class='container'>
-  努力开发中~
+<view wx:if='{{datas.length}}' class='container statistics'>
+  <view class='chart'>
+    <ff-canvas id="titlePie" canvas-id="titlePie" opts="{{titlePieOpts}}"></ff-canvas>
+    <view class='center' catchtap='changeBookType'>
+      <text class='info'>{{bookType ? '总收入' : '总支出'}}</text>
+      <text class='price'>{{totalPrice}}</text>
+      <text class='toggle icon lb-icon-toggle'></text>
+    </view>
+  </view>
+  <scroll-view class='detail-list' scroll-y='true'>
+    <title-stastics-item 
+      wx:for='{{datas}}' 
+      wx:key='index'
+      icon='{{item.icon}}'
+      color='{{item.color}}'
+      title='{{item.title}}'
+      count='{{item.count}}'
+      price='{{item.price}}'
+      totalCount='{{totalCount}}'
+      totalPrice='{{totalPrice}}'
+    />
+    <view class='no-more'>没有更多啦</view>
+  </scroll-view>
+</view>
+<view wx:else class='container statistics'>
+  <no-data />
 </view>

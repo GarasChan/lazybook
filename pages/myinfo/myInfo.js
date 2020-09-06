@@ -32,7 +32,7 @@ Page({
     const userInfo = app.globalData.userInfo;
     let data = {};
     if (userInfo) {
-      for(let key in userInfo) {
+      for (let key in userInfo) {
         if (userInfo[key] !== undefined && userInfo[key] !== null) {
           const val = userInfo[key];
           data[key] = val;
@@ -47,89 +47,65 @@ Page({
     }
   },
 
-  avatarErr: function(e) {
+  avatarErr: function (e) {
     this.setData({
       avatar: '../../images/avatar.jpg'
     })
   },
 
-  previewAvatar: function() {
+  previewAvatar: function () {
     wx.previewImage({
-      urls: [this.data.avatar]
+      urls: [`${this.data.avatar}?t=${new Date().getTime()}`]
     })
   },
 
-  changeAvatar: function() {
+  changeAvatar: function () {
     const _this = this;
     wx.showActionSheet({
       itemList: ['拍一张', '从相册选择'],
       success: res => {
         wx.chooseImage({
           count: 1,
+          sizeType: ['compressed'],
           sourceType: [_this.data.sourceType[res.tapIndex]],
           success(res) {
-            const tempFilePath = res.tempFilePaths[0];
-            _this.setData({
-              avatar: tempFilePath
+            const tempFilePath = res.tempFilePaths[0],
+            suffix = tempFilePath.match(/(.+)\.(.+)$/)[2];
+            util.uploadFile(tempFilePath, `lazybook/images/avatar/${app.globalData.userInfo.openid}.${suffix}`).then(({result}) => {
+              app.globalData.userInfo.avatar = result;
+              _this.setData({
+                avatar: `${result}?t=${new Date().getTime()}`
+              })
+            }).catch(err => {
+              console.log(err);
             })
-            util.uploadImage(tempFilePath, 'avatar').then(res => {
-              app.globalData.userInfo.avatar = config.host + 'resources/images/avatar/' + res.name;
-            })
-            // const uploadTask = wx.uploadFile({
-            //   url: config.urlComponents.uploadUrl,
-            //   filePath: tempFilePath,
-            //   header: {
-            //     skey: wx.getStorageSync('skey')
-            //   },
-            //   name: 'avatar',
-            //   success: res => {
-            //     const resObj = JSON.parse(res.data);
-            //     if (resObj.success) {
-            //       util.showMessage('头像修改成功');
-            //       app.globalData.userInfo.avatar = config.host + 'resources/images/avatar/' + resObj.avatar;
-            //     }
-            //   },
-            //   fail: err => {
-            //     util.showMessage('图片上传失败');
-            //   }
-            // })
-            // uploadTask.onProgressUpdate((res) => {
-            //   console.log('上传进度', res.progress)
-            //   console.log('已经上传的数据长度', res.totalBytesSent)
-            //   console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
-            // })
-            // uploadTask.abort() // 取消上传任务
           }
         })
       },
     })
-    
-  },
-
-  uploadAvatar: function() {
 
   },
 
-  changeGender: function(e) {
+  changeGender: function (e) {
     const gender = util.code2gender(e.detail.value);
     this.setData({ gender });
     this.saveInfo(e.detail.value, 'gender', '性别');
   },
 
-  changeRegion: function(e) {
+  changeRegion: function (e) {
     const region = e.detail.value.join(' ');
     this.setData({ region });
     this.saveInfo(region, 'region', '地区');
   },
 
-  changeBirthday: function(e) {
+  changeBirthday: function (e) {
     const birthday = e.detail.value;
     this.setData({ birthday });
     this.saveInfo(birthday, 'birthday', '生日');
   },
 
 
-  changeInfo: function(e) {
+  changeInfo: function (e) {
     const key = e.currentTarget.dataset.key,
       title = e.currentTarget.dataset.title,
       value = this.data[key];
@@ -144,7 +120,7 @@ Page({
     }
   },
 
-  confirmEvent: function(e) {
+  confirmEvent: function (e) {
     const { value, key, title } = e.detail;
     this.setData({
       [key]: value
@@ -155,56 +131,16 @@ Page({
 
   saveInfo: function (value, key, title) {
     title = title || key;
-    util.request({
-      url: config.urlComponents.userUrl,
-      method: 'PUT',
+    wx.cloud.callFunction({
+      name: 'updateUser',
       data: {
         [key]: value
-      },
-      success: res => {
-        if (res.data.success) {
-          util.showMessage(`"${title}" 修改成功`)
-        }
-        app.globalData.userInfo[key] = value;
-      },
-      fail: err => {
-        util.showMessage(`"${title}" 修改失败`)
       }
+    }).then(res => {
+      util.showMessage(`"${title}" 修改成功`)
+      app.globalData.userInfo[key] = value;
+    }).catch(err => {
+      util.showMessage(`"${title}" 修改失败`)
     })
   },
-
-  // saveInfo: function() {
-  //   // avatar: 'https://wx.qlogo.cn/mmopen/vi_32/ibfR0MmeENEt6V3oaWjUWiaNZZy4Dy61icESNIAicJvPdEGTVQjU25EwpSUtqw3Ticn3kRSEUm632exqEAcPQbuqGgA/132',
-  //   //   name: '',
-  //   //     gender: 0,
-  //   //       region: '',
-  //   //         birthday: '',
-  //   //           career: '',
-  //   //             signature: '',
-  //   //               phone: '',
-  //   //                 email: '',
-  //   let data = {
-  //     name: this.data.name,
-  //     gender: util.code2gender(this.data.gender),
-  //     region: this.data.region,
-  //     birthday: this.data.birthday,
-  //     career: this.data.career,
-  //     signature: this.data.signature,
-  //     phone: this.data.phone,
-  //     email:this.data.email
-  //   }
-  //   util.request({
-  //     url: config.urlComponents.userUrl,
-  //     method: 'PUT',
-  //     data,
-  //     success: res => {
-  //       if (res.data.success) {
-
-  //       }
-  //     },
-  //     fail: err => {
-
-  //     }
-  //   })
-  // }
 })
