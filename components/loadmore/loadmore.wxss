@@ -7,7 +7,7 @@
     align-items: center;
   }
   
-  .loadmore text{
+  .loadmore .text{
     font-size: 13px;
     color: #bfbfbf;
     font-weight: bold;

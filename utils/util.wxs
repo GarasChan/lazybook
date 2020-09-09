@@ -5,13 +5,13 @@ var util = {
   },
 
   // 将'，'转换成'&ensp;'
-  comma2space: function(value) {
+  comma2space: function(value = '') {
     var reg = getRegExp(',|，', 'g');
     return value.replace(reg, '&ensp;');
   },
 
   // 将'&ensp;'转换成'，'
-  space2comma: function (value) {
+  space2comma: function (value = '') {
     var reg = getRegExp('&ensp;', 'g');
     return value.replace(reg, '，');
   },

@@ -2,7 +2,7 @@
 <view hidden='{{!isShow}}' class='calculator' catchtap='hideCalculator'>
   <view class='result-container'>
     <input class='calc-con' disabled='{{true}}' placeholder='请输入表达式' value='{{value}}'/>
-    <text> = </text>
+    <text class="equil"> = </text>
     <input class='calc-res' disabled='{{true}}' placeholder='0' value='{{result}}' />
   </view>
   <view class='calc-container' catchtap='changeValue'>

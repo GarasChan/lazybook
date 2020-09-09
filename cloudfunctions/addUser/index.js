@@ -10,10 +10,18 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     const db = cloud.database();
 
+   
     const userInfo = {
         openid: wxContext.OPENID,
-        ...event
-    };
+    }; 
+    for (const key in event) {
+        if (event.hasOwnProperty(key)) {
+            if (key === 'userInfo') {
+                return;
+            }
+            userInfo[key] = event[key];
+        }
+    }
     return db.collection('user').add({
         data: userInfo
     }).then(res => userInfo)

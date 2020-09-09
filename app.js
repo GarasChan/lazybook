@@ -29,9 +29,28 @@ App({
         }
       })
     }
+
+    wx.cloud.callFunction({
+      name: 'login'
+    }).then(res => {
+      _this.globalData.openid = res.result.openid;
+    })
+
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          wx.cloud.callFunction({
+            name: 'queryUser'
+          }).then(({result}) => {
+            _this.globalData.userInfo = result.data[0];
+          })
+        }
+      }
+    })
   },
 
   globalData: {
+    isLogin: false,
     openid: null,
     userInfo: null,
     systemInfo: null

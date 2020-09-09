@@ -27,6 +27,10 @@
   border-radius:0;
 }
 
+.a:hover {
+  opacity: .8;
+}
+
 .a::after{
   border:none;
 }

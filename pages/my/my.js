@@ -4,6 +4,8 @@ const util = require('../../utils/util.js');
 //获取应用实例
 const app = getApp();
 
+const defauleAvatar = '../../images/avatar.jpg'
+
 Page({
 
   /**
@@ -11,7 +13,10 @@ Page({
    */
   data: {
     myBackground: config.defaultImages.myBackground,
-    userInfo: "",
+    isLogin: false,
+    userInfo: {
+      avatar: defauleAvatar
+    },
     allDays: 0,
     allTimes: 0
   },
@@ -31,7 +36,11 @@ Page({
 
   onShow: function() {
     this.getCountStatistics(false);
+    if (!app.globalData.userInfo) {
+      return;
+    }
     this.setData({
+      'isLogin': true,
       'userInfo.avatar': app.globalData.userInfo.avatar + '?t=' + new Date().getTime(),
       'userInfo.name': app.globalData.userInfo.name,
       'userInfo.signature': app.globalData.userInfo.signature
@@ -45,6 +54,9 @@ Page({
   },
 
   go2userInfo: function () {
+    if (!app.globalData.userInfo) {
+      return;
+    }
     wx.navigateTo({
       url: '../myinfo/myInfo',
     })
@@ -71,6 +83,9 @@ Page({
    */
   onPullDownRefresh: function () {
     this.getCountStatistics(true);
+    if (!app.globalData.userInfo) {
+      return;
+    }
     this.setData({
       'userInfo.avatar': app.globalData.userInfo.avatar + '?t=' + new Date().getTime(),
       'userInfo.name': app.globalData.userInfo.name,

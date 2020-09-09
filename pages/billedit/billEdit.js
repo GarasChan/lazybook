@@ -294,7 +294,7 @@ Page({
       color: this.data.color,
       iconType: this.data.multiIndex[1],
       price: this.data.price || 0,
-      recorder: app.globalData.userInfo.name,
+      recorder: app.globalData.userInfo ? app.globalData.userInfo.name : '神秘人士（未登录）',
       date: this.data.date,
       time: this.data.time,
       label: this.data.label.join(','),

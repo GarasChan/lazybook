@@ -52,7 +52,7 @@
   box-sizing: border-box;
 }
 
-.modal .footer text {
+.modal .footer .btn {
   display: block;
   height: 100rpx;
   line-height: 100rpx;
@@ -60,7 +60,7 @@
   font-size: 32rpx;
 }
 
-.modal .footer text:active {
+.modal .footer .btn:active {
   background-color: rgba(0, 0, 0, .1)
 }
 

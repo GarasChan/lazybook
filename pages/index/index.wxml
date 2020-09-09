@@ -13,14 +13,14 @@
       <view class='phone-num'>
         <label class='info'>手机号</label>
         <input type='number' placeholder='输入手机号'></input>
-        <button class='code a'>获取验证码</button>
+        <view class='code a'>获取验证码</view>
       </view>
       <view class='phone-code'>
         <label class='info'>验证码</label>
         <input type='text' placeholder='输入验证码'></input>
       </view>
     </view>
-    <button class='login-btn'>登录</button>
+    <view class='login-btn' bindtap="phoneCodeLogin">登录</view>
   </view>
   <button class='a login-type-btn' bindtap='changeLoginType'>{{loginMsg}}</button>
 </view>

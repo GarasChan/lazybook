@@ -39,7 +39,6 @@ Page({
   },
 
   delBill: function (e) {
-    const _this = this;
     const outerId = e.currentTarget.dataset.id,
       innerId = e.detail.id,
       date = this.data.bills[outerId].date;

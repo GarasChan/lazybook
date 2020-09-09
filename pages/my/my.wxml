@@ -3,10 +3,15 @@
   <view class='info-container' style='background-image: url({{myBackground}})'>
     <view class='userinfo' bindtap='go2userInfo'>
       <image class='userinfo-avatar' binderror='avatarErr' src="{{userInfo.avatar}}"></image>
-      <view class='userinfo-info'>
+      <view wx:if="{{isLogin}}" class='userinfo-info'>
         <text class='info-nickname'>{{userInfo.name}}</text>
         <text class='info-signature'>{{userInfo.signature || '该用户没有留下任何信息'}}</text>
       </view>
+      <view wx:else class="userinfo-login">
+        <navigator url="../index/index" class="login">登 录</navigator>
+        <text class="tip">登录体验更过精彩功能</text>
+      </view>
+      
     </view>
     <view class='bookinfo'>
       <view class='bookinfo-days'>

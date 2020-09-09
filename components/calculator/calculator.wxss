@@ -22,7 +22,7 @@
   box-sizing: border-box;
 }
 
-.result-container text {
+.result-container .equil {
   color: #ffa200;
 }
 

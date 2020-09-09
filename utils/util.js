@@ -182,6 +182,8 @@ let Util = {
     lists.forEach(list => {
       list.items.forEach(item => {
         item.date = list.date;
+        item._id = item.id;
+        delete item.id;
         bills.push(item);
       })
     })

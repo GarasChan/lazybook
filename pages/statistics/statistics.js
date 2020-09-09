@@ -28,7 +28,7 @@ Page({
   onShow: function (options) {
     this.getDatas().then((datas) => {
       this.initPieChart(datas);
-    });
+    }).catch(() => {});
   },
 
   initPieChart: function (datas) {

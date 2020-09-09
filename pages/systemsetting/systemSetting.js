@@ -1,4 +1,5 @@
-// pages/system_setting/system-setting.js
+// pages/system_setting/system-setting.js'
+const app = getApp();
 const util = require('../../utils/util.js');
 const config = require('../../utils/config.js');
 
@@ -26,9 +27,9 @@ Page({
       content: '确定退出当前账号',
       success(res) {
         if (res.confirm) {
-          wx.clearStorageSync('skey');
+          app.globalData.userInfo = null;
           wx.reLaunch({
-            url: '../index/index'
+            url: '../book/book'
           })
         }
       }

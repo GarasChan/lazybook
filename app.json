@@ -1,6 +1,5 @@
 {
     "pages": [
-        "pages/index/index",
         "pages/book/book",
         "pages/statistics/statistics",
         "pages/my/my",
@@ -9,7 +8,8 @@
         "pages/mapviewer/mapViewer",
         "pages/billedit/billEdit",
         "pages/myinfo/myInfo",
-        "pages/aboutus/aboutUs"
+        "pages/aboutus/aboutUs",
+        "pages/index/index"
     ],
     "permission": {
         "scope.userLocation": {
